@@ -8,7 +8,7 @@ public class User {
     private String username;
     private String phoneNumber;
     private String email;
-    private String password;
+    private int hashPassword;
     private double wallet;
     private ArrayList<Game> library;
     private ArrayList<String> friends;
@@ -18,7 +18,7 @@ public class User {
         this.username = username;
         this.phoneNumber = phoneNumber;
         this.email = email;
-        this.password = password;
+        hashPassword = password.hashCode();
         wallet = 0;
         library = new ArrayList<>();
         friends = new ArrayList<>();
@@ -49,8 +49,19 @@ public class User {
         this.email = email;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public boolean setNewPassword(String newPassword, String oldPassword) {
+
+        if (oldPassword.hashCode() != hashPassword){
+            return false;
+        }
+        hashPassword = newPassword.hashCode();
+        return true;
+    }
+    public boolean checkPassword(String password){
+        if (password.hashCode() == hashPassword){
+            return true;
+        }
+        return false;
     }
 
     public double getWallet() {
