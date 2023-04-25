@@ -10,7 +10,7 @@ public class User {
     private String email;
     private int hashPassword;
     private double wallet;
-    private ArrayList<Game> library;
+    private ArrayList<String> library;
     private ArrayList<String> friends;
     private ArrayList<String> requests;
 
@@ -80,12 +80,39 @@ public class User {
         return true;
     }
 
-    public ArrayList<Game> getLibrary() {
+    public ArrayList<String> getLibrary() {
         return library;
+    }
+    public boolean addGame(Game game){
+        if (library.indexOf(game.getName()) == -1){
+            library.add(game.getName());
+            return true;
+        }
+        return false;
+    }
+    public boolean doHaveGame(Game game){
+        if (library.indexOf(game.getName()) != -1){
+            return true;
+        }
+        return false;
     }
 
     public ArrayList<String> getFriends() {
         return friends;
+    }
+
+    public boolean isFriend(User user){
+        if (friends.indexOf(user.getUsername()) != -1){
+            return true;
+        }
+        return false;
+    }
+    public boolean addFriend(User user){
+        if (friends.indexOf(user.getUsername()) != -1){
+            return false;
+        }
+        friends.add(user.getUsername());
+        return true;
     }
 
     public ArrayList<String> getRequests() {
