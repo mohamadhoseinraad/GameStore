@@ -2,6 +2,7 @@ package ir.ac.kntu;
 
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.Objects;
 
 public class User {
     private String username;
@@ -48,20 +49,12 @@ public class User {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
     public void setPassword(String password) {
         this.password = password;
     }
 
     public double getWallet() {
         return wallet;
-    }
-
-    public void setWallet(double wallet) {
-        this.wallet = wallet;
     }
 
     public void chargeWallet(double value) {
@@ -76,23 +69,24 @@ public class User {
         return library;
     }
 
-    public void setLibrary(ArrayList<Game> library) {
-        this.library = library;
-    }
-
     public ArrayList<String> getFriends() {
         return friends;
-    }
-
-    public void setFriends(ArrayList<String> friends) {
-        this.friends = friends;
     }
 
     public ArrayList<String> getRequests() {
         return requests;
     }
 
-    public void setRequests(ArrayList<String> requests) {
-        this.requests = requests;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return username.equals(user.username) && phoneNumber.equals(user.phoneNumber) && email.equals(user.email);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(username, phoneNumber, email);
     }
 }
