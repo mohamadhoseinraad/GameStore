@@ -112,11 +112,27 @@ public class User {
             return false;
         }
         friends.add(user.getUsername());
+        requests.remove(user.getUsername());
         return true;
+    }
+
+    public boolean removeFriend(User user){
+        if (friends.indexOf(user.getUsername()) != -1){
+            friends.remove(user.getUsername());
+            return true;
+        }
+        return false;
     }
 
     public ArrayList<String> getRequests() {
         return requests;
+    }
+    public boolean addRequest(User user){
+        if (requests.indexOf(user.getUsername()) != -1 || !isFriend(user)){
+            requests.add(user.getUsername());
+            return true;
+        }
+        return false;
     }
 
     @Override
