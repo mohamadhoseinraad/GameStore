@@ -1,3 +1,5 @@
+package ir.ac.kntu;
+
 public class Community {
     private String username;
     private double score;
