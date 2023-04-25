@@ -72,8 +72,12 @@ public class User {
         wallet += value;
     }
 
-    public void payWallet(double price) {
+    public boolean payWallet(double price) {
+        if (wallet < price){
+            return false;
+        }
         wallet -= price;
+        return true;
     }
 
     public ArrayList<Game> getLibrary() {
