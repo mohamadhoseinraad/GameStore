@@ -1,5 +1,8 @@
 package ir.ac.kntu;
 
+import ir.ac.kntu.models.Game;
+import ir.ac.kntu.models.User;
+
 import java.util.ArrayList;
 
 public class Store {

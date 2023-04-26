@@ -1,6 +1,7 @@
 package ir.ac.kntu;
 
-import java.util.ArrayList;
+import ir.ac.kntu.models.User;
+
 import java.util.Scanner;
 
 public class Main {

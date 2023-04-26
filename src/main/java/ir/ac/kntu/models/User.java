@@ -1,7 +1,6 @@
-package ir.ac.kntu;
+package ir.ac.kntu.models;
 
 import java.util.ArrayList;
-import java.util.Map;
 import java.util.Objects;
 
 public class User {

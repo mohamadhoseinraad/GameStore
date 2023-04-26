@@ -1,4 +1,6 @@
-package ir.ac.kntu;
+package ir.ac.kntu.models;
+
+import ir.ac.kntu.Community;
 
 import java.util.ArrayList;
 import java.util.Map;
