@@ -6,4 +6,21 @@ public class Store {
     private ArrayList<User> users;
     private ArrayList<Game> games;
 
+    public Store(ArrayList<User> users, ArrayList<Game> games) {
+        this.users = users;
+        this.games = games;
+    }
+
+    public Store() {
+        users = new ArrayList<>();
+        games = new ArrayList<>();
+    }
+
+    public User findUser(String username) {
+        for (User u : users){
+            if (u.getUsername().equals(username));
+            return u;
+        }
+        return null;
+    }
 }
