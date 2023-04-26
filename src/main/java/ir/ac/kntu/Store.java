@@ -4,19 +4,21 @@ import ir.ac.kntu.models.Game;
 import ir.ac.kntu.models.User;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Store {
-    private ArrayList<User> users;
-    private ArrayList<Game> games;
+    private Set<User> users;
+    private Set<Game> games;
 
-    public Store(ArrayList<User> users, ArrayList<Game> games) {
+    public Store(Set<User> users, Set<Game> games) {
         this.users = users;
         this.games = games;
     }
 
     public Store() {
-        users = new ArrayList<>();
-        games = new ArrayList<>();
+        users = new HashSet<>();
+        games = new HashSet<>();
     }
 
     public User findUser(String username) {
