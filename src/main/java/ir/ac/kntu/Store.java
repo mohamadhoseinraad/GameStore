@@ -21,14 +21,34 @@ public class Store {
         games = new HashSet<>();
     }
 
-    public User findUser(String username) {
-        for (User u : users){
-            if (u.getUsername().equals(username));
-            return u;
+    public ArrayList<User> findUserByUsername(String username) {
+        ArrayList<User> result = new ArrayList<>();
+        for (User u : users) {
+            if (u.getUsername().compareTo(username) >= 0) ;
+            result.add(u);
         }
-        return null;
+        return result;
     }
-    public boolean addGame(Game game){
+
+    public ArrayList<User> findUserByPhoneNumber(String phoneNumber) {
+        ArrayList<User> result = new ArrayList<>();
+        for (User u : users) {
+            if (u.getPhoneNumber().compareTo(phoneNumber) >= 0) ;
+            result.add(u);
+        }
+        return result;
+    }
+
+    public ArrayList<User> findUserByEmail(String email) {
+        ArrayList<User> result = new ArrayList<>();
+        for (User u : users) {
+            if (u.getEmail().compareTo(email) >= 0) ;
+            result.add(u);
+        }
+        return result;
+    }
+
+    public boolean addGame(Game game) {
         return games.add(game);
     }
 }
