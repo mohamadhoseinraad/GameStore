@@ -9,16 +9,16 @@ public class Scan {
 
     }
 
-    public int getInt(){
+    public static int getInt(){
         return sc.nextInt();
     }
-    public String getLine(){
+    public static String getLine(){
         return sc.nextLine();
     }
-    public String getNext(){
+    public static String getNext(){
         return sc.next();
     }
-    public void scanClose(){
+    public static void scanClose(){
         sc.close();
     }
 }

@@ -28,4 +28,7 @@ public class Store {
         }
         return null;
     }
+    public boolean addGame(Game game){
+        return games.add(game);
+    }
 }
