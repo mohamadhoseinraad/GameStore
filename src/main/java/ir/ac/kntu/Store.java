@@ -21,6 +21,22 @@ public class Store {
         games = new HashSet<>();
     }
 
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
+    }
+
+    public Set<Game> getGames() {
+        return games;
+    }
+
+    public void setGames(Set<Game> games) {
+        this.games = games;
+    }
+
     public User findUserByUsername(String username) {
         for (User user : users) {
             if (user.getUsername().equals(username)){
@@ -56,5 +72,8 @@ public class Store {
     public boolean addUser(){
         User newUser = User.makeUser();
         return users.add(newUser);
+    }
+    public boolean addSpecialUser(User user){
+        return users.add(user);
     }
 }

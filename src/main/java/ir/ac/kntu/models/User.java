@@ -186,4 +186,21 @@ public class User {
             }
         }
     }
+
+    @Override
+    public String toString() {
+        return "Username :" + username + " | Email : " + email + " | 5 last Game  \n" + lastGameName();
+    }
+
+    private String lastGameName() {
+        String result = "";
+        int i = 5;
+        if (library.size() < 5) {
+            i = library.size();
+        }
+        for (; i > 0; i--) {
+            result += i + " - " + library.get(library.size() - 1 - i) +" \\ ";
+        }
+        return result;
+    }
 }
