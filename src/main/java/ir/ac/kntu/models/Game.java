@@ -4,8 +4,11 @@ import ir.ac.kntu.Community;
 
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.Objects;
 
 public class Game {
+    public static int gamesNumber =0;
+    private final int id;
     private String name;
     private String details;
     private String genre;
@@ -19,6 +22,7 @@ public class Game {
         this.genre = genre;
         this.price = price;
         score = 0;
+        id = gamesNumber++;
         communities = new ArrayList<>();
     }
 
@@ -70,6 +74,10 @@ public class Game {
         this.communities = communities;
     }
 
+    public int getId(){
+        return id;
+    }
+
     @Override
     public String toString() {
         return "Game{\n" +
@@ -79,5 +87,18 @@ public class Game {
                 ", score=" + score +
                 ", details='\n" + details +
                 "\n}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Game game = (Game) o;
+        return id == game.getId() && name == game.getName() && genre == game.getGenre();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, genre);
     }
 }
