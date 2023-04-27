@@ -1,5 +1,8 @@
 package ir.ac.kntu.models;
 
+import ir.ac.kntu.Scan;
+import ir.ac.kntu.Store;
+
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -50,14 +53,15 @@ public class User {
 
     public boolean setNewPassword(String newPassword, String oldPassword) {
 
-        if (oldPassword.hashCode() != hashPassword){
+        if (oldPassword.hashCode() != hashPassword) {
             return false;
         }
         hashPassword = newPassword.hashCode();
         return true;
     }
-    public boolean checkPassword(String password){
-        if (password.hashCode() == hashPassword){
+
+    public boolean checkPassword(String password) {
+        if (password.hashCode() == hashPassword) {
             return true;
         }
         return false;
@@ -72,7 +76,7 @@ public class User {
     }
 
     public boolean payWallet(double price) {
-        if (wallet < price){
+        if (wallet < price) {
             return false;
         }
         wallet -= price;
@@ -82,15 +86,17 @@ public class User {
     public ArrayList<String> getLibrary() {
         return library;
     }
-    public boolean addGame(Game game){
-        if (library.indexOf(game.getName()) == -1){
+
+    public boolean addGame(Game game) {
+        if (library.indexOf(game.getName()) == -1) {
             library.add(game.getName());
             return true;
         }
         return false;
     }
-    public boolean doHaveGame(Game game){
-        if (library.indexOf(game.getName()) != -1){
+
+    public boolean doHaveGame(Game game) {
+        if (library.indexOf(game.getName()) != -1) {
             return true;
         }
         return false;
@@ -100,14 +106,15 @@ public class User {
         return friends;
     }
 
-    public boolean isFriend(User user){
-        if (friends.indexOf(user.getUsername()) != -1){
+    public boolean isFriend(User user) {
+        if (friends.indexOf(user.getUsername()) != -1) {
             return true;
         }
         return false;
     }
-    public boolean addFriend(User user){
-        if (friends.indexOf(user.getUsername()) != -1){
+
+    public boolean addFriend(User user) {
+        if (friends.indexOf(user.getUsername()) != -1) {
             return false;
         }
         friends.add(user.getUsername());
@@ -115,8 +122,8 @@ public class User {
         return true;
     }
 
-    public boolean removeFriend(User user){
-        if (friends.indexOf(user.getUsername()) != -1){
+    public boolean removeFriend(User user) {
+        if (friends.indexOf(user.getUsername()) != -1) {
             friends.remove(user.getUsername());
             return true;
         }
@@ -126,8 +133,9 @@ public class User {
     public ArrayList<String> getRequests() {
         return requests;
     }
-    public boolean addRequest(User user){
-        if (requests.indexOf(user.getUsername()) != -1 || !isFriend(user)){
+
+    public boolean addRequest(User user) {
+        if (requests.indexOf(user.getUsername()) != -1 || !isFriend(user)) {
             requests.add(user.getUsername());
             return true;
         }
@@ -145,5 +153,27 @@ public class User {
     @Override
     public int hashCode() {
         return Objects.hash(username);
+    }
+
+    public static User makeUser() {
+        System.out.println("Pleas enter your username : (Type 1 to Cancel)");
+        String username = Scan.getLine();
+        System.out.println("Pleas enter your phone number : (Type 1 to Cancel)");
+        String phoneNumber = Scan.getLine();
+        System.out.println("Pleas enter your email : (Type 1 to Cancel)");
+        String email = Scan.getLine();
+        String password;
+        String passwordVarify;
+        while (true) {
+            System.out.println("Pleas enter your password :");
+            password = Scan.getLine();
+            System.out.println("Pleas enter your password again :");
+            passwordVarify = Scan.getLine();
+            if (password.equals(passwordVarify)) {
+                break;
+            }
+            System.out.println("Error : passwords are not same try again");
+        }
+        return new User(username,phoneNumber,email,password);
     }
 }

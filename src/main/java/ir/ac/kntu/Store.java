@@ -21,13 +21,14 @@ public class Store {
         games = new HashSet<>();
     }
 
-    public ArrayList<User> findUserByUsername(String username) {
-        ArrayList<User> result = new ArrayList<>();
-        for (User u : users) {
-            if (u.getUsername().compareTo(username) >= 0) ;
-            result.add(u);
+    public User findUserByUsername(String username) {
+        for (User user : users) {
+            if (user.getUsername().equals(username)){
+                return user;
+            }
+
         }
-        return result;
+        return null;
     }
 
     public ArrayList<User> findUserByPhoneNumber(String phoneNumber) {
