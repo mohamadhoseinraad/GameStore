@@ -49,7 +49,12 @@ public class Store {
         return result;
     }
 
-    public boolean addGame(Game game) {
-        return games.add(game);
+    public boolean addGame() {
+        Game newGame = Game.makeGame();
+        return games.add(newGame);
+    }
+    public boolean addUser(){
+        User newUser = User.makeUser();
+        return users.add(newUser);
     }
 }

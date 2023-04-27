@@ -156,24 +156,26 @@ public class User {
     }
 
     public static User makeUser() {
-        System.out.println("Pleas enter your username : (Type 1 to Cancel)");
+        System.out.println("Pleas enter your username : ");
         String username = Scan.getLine();
-        System.out.println("Pleas enter your phone number : (Type 1 to Cancel)");
+        System.out.println("Pleas enter your phone number : ");
         String phoneNumber = Scan.getLine();
-        System.out.println("Pleas enter your email : (Type 1 to Cancel)");
+        System.out.println("Pleas enter your email : ");
         String email = Scan.getLine();
         String password;
         String passwordVarify;
         while (true) {
             System.out.println("Pleas enter your password :");
             password = Scan.getLine();
-            System.out.println("Pleas enter your password again :");
-            passwordVarify = Scan.getLine();
-            if (password.equals(passwordVarify)) {
-                break;
+            if (password.length() >= 8){
+                System.out.println("Pleas enter your password again :");
+                passwordVarify = Scan.getLine();
+                if (password.equals(passwordVarify)) {
+                    return new User(username,phoneNumber,email,password);
+                }
+                System.out.println("Error : passwords are not same try again");
             }
-            System.out.println("Error : passwords are not same try again");
+            System.out.println("Error Password must be 8 or more!");
         }
-        return new User(username,phoneNumber,email,password);
     }
 }

@@ -1,6 +1,7 @@
 package ir.ac.kntu.models;
 
 import ir.ac.kntu.Community;
+import ir.ac.kntu.Scan;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -100,5 +101,17 @@ public class Game {
     @Override
     public int hashCode() {
         return Objects.hash(id, name, genre);
+    }
+    public static Game makeGame() {
+        System.out.println("Pleas enter game name :");
+        String name = Scan.getLine();
+        System.out.println("Pleas enter game genre :");
+        String genre = Scan.getLine();
+        System.out.println("Pleas enter detail of game :");
+        String detail = Scan.getLine();
+        System.out.println("Pleas enter price :");
+        double price = Double.parseDouble(Scan.getLine());
+
+        return new Game(name,detail,genre,price);
     }
 }
