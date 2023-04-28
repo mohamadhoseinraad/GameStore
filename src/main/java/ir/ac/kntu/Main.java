@@ -1,5 +1,6 @@
 package ir.ac.kntu;
 
+import ir.ac.kntu.menu.StartMenu;
 import ir.ac.kntu.models.User;
 
 import java.util.Scanner;
@@ -13,24 +14,9 @@ public class Main {
         User user2 = new User("ABCD", "09", "qw", "123");
         store.addSpecialUser(user);
         store.addSpecialUser(user2);
-        showMenu();
-        Option choise = handleOption();
-        while (choise != Option.EXIT) {
-            switch (choise) {
-                case LOGIN: {
-                    System.out.println("Log in");
-                    break;
-                }
-                case SING_UP: {
-                    System.out.println("Sing up");
-                    break;
-                }
-                default:
-                    System.out.println("Invalid choose");
-            }
-            showMenu();
-            choise = handleOption();
-        }
+
+        StartMenu startMenu = new StartMenu(store);
+        startMenu.showMenu();
 
 
     }

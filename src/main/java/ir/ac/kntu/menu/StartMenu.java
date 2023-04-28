@@ -2,6 +2,7 @@ package ir.ac.kntu.menu;
 
 import ir.ac.kntu.Scan;
 import ir.ac.kntu.Store;
+import ir.ac.kntu.TerminalColor;
 
 public class StartMenu extends Menu {
 
@@ -12,13 +13,13 @@ public class StartMenu extends Menu {
     }
 
     @Override
-    void showMenu() {
+    public void showMenu() {
         StartOption option;
         while ((option = printMenuOptions("Game Store", StartOption.class)) != StartOption.EXIT) {
             if (option != null){
                 switch (option) {
                     case LOGIN: {
-                        System.out.println("Log in");
+                        loginUser();
                         break;
                     }
                     case SING_UP: {
@@ -32,16 +33,22 @@ public class StartMenu extends Menu {
         }
     }
     public void loginUser(){
-        System.out.println("\\u001B[34m---- Log in ----");
-        System.out.println("\\u001B[33mUser name:");
+        TerminalColor.blue();
+        System.out.println("---- Log in ----");
+        TerminalColor.reset();
+        System.out.println("User name:");
         String username = Scan.getLine();
-        System.out.println("\\u001B[33mUser name:");
+        System.out.println("Password:");
         String password = Scan.getLine();
         if (storeDB.isValidUser(username,password)){
-            System.out.println("\\u001B[32mWelcome "+ username);
+            TerminalColor.green();
+            System.out.println("Welcome "+ username);
+            TerminalColor.reset();
         }
         else {
-            System.out.println("\\u001B[31username of password incorrect1");
+            TerminalColor.red();
+            System.out.println("username of password incorrect1");
+            TerminalColor.reset();
         }
     }
 }

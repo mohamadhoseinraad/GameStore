@@ -1,6 +1,7 @@
 package ir.ac.kntu.menu;
 
 import ir.ac.kntu.Scan;
+import ir.ac.kntu.TerminalColor;
 
 public abstract class Menu {
 
@@ -12,7 +13,9 @@ public abstract class Menu {
         if (choice >= 0 && choice < options.length) {
             return options[choice];
         }
-        System.out.println("\\u001B[31mRed Error Wrong choice !");
+        TerminalColor.red();
+        System.out.println("Wrong choice !");
+        TerminalColor.reset();
         return null;
     }
 
@@ -20,7 +23,7 @@ public abstract class Menu {
         System.out.println("----------" + title + "----------");
         T[] options = menuEnum.getEnumConstants();
         for (int i = 0; i < options.length; i++) {
-            System.out.println(i + " - " + options[i]);
+            System.out.println((i+1) + " - " + options[i]);
         }
         System.out.print("Enter your choice : ");
         return getOption(menuEnum);
