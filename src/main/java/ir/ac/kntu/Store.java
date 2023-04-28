@@ -76,4 +76,12 @@ public class Store {
     public boolean addSpecialUser(User user){
         return users.add(user);
     }
+    public boolean isValidUser(String username, String password){
+        for (User user: users){
+            if (user.getUsername().equals(username)){
+                return user.checkPassword(password);
+            }
+        }
+        return false;
+    }
 }
