@@ -59,7 +59,7 @@ public class ProfileMenu extends Menu {
 
     public void changeUsername() {
         System.out.println("Enter your new username:");
-        String newUsername = Scan.getLine().toUpperCase();
+        String newUsername = Scan.getLine().toUpperCase().trim();
         TerminalColor.red();
         if (newUsername.equals(user.getUsername())) {
             System.out.println("this username is same!");
@@ -76,18 +76,42 @@ public class ProfileMenu extends Menu {
         TerminalColor.green();
         System.out.println("Username changed :D");
         TerminalColor.reset();
-        ;
     }
 
     public void changeEmail() {
-        for (User ss : storeDB.getUsers()) {
-            System.out.println(ss);
+        System.out.println("Enter your new email:");
+        String newEmail = Scan.getLine().toUpperCase().trim();
+        TerminalColor.red();
+        if (!newEmail.matches(".*@.*")) {
+            System.out.println("New email is not valid!");
+            return;
         }
-        System.out.println("email");
+        if (newEmail.equals(user.getEmail())){
+            System.out.println("New email is same as previous email !");
+            return;
+        }
+        user.setEmail(newEmail);
+        TerminalColor.green();
+        System.out.println("email changed :D");
+        TerminalColor.reset();
     }
 
     public void changePhoneNumber() {
-        System.out.println("phone");
+        System.out.println("Enter your new phone number:");
+        String newPhoneNumber = Scan.getLine().toUpperCase().trim();
+        TerminalColor.red();
+        if (!newPhoneNumber.matches("[0-9+]+")) {
+            System.out.println("New phone number is not valid!");
+            return;
+        }
+        if (newPhoneNumber.equals(user.getEmail())){
+            System.out.println("New phone number is same as previous email !");
+            return;
+        }
+        user.setPhoneNumber(newPhoneNumber);
+        TerminalColor.green();
+        System.out.println("phone number changed :D");
+        TerminalColor.reset();
     }
 
     public void chargeWallet() {
