@@ -12,5 +12,6 @@ public class Main {
         store.addUser(user2);
         AuthMenu authMenu = new AuthMenu(store);
         authMenu.showMenu();
+
     }
 }

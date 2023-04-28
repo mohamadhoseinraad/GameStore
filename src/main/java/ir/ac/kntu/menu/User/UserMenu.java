@@ -9,7 +9,6 @@ import ir.ac.kntu.models.User;
 public class UserMenu extends Menu {
 
     private Store storeDB;
-
     private User user;
 
     public UserMenu(Store store, User user) {
@@ -54,8 +53,8 @@ public class UserMenu extends Menu {
     }
 
     public void profile() {
-        System.out.println(user);
-
+        ProfileMenu profileMenu = new ProfileMenu(storeDB,user);
+        profileMenu.showMenu();
     }
 
     public void store() {

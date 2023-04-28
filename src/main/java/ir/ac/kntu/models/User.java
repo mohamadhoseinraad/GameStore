@@ -2,6 +2,7 @@ package ir.ac.kntu.models;
 
 import ir.ac.kntu.Scan;
 import ir.ac.kntu.Store;
+import ir.ac.kntu.TerminalColor;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -170,6 +171,22 @@ public class User {
     @Override
     public String toString() {
         return "Username :" + username + " | Email : " + email + " | 5 last Game  \n" + lastGameName();
+    }
+    public void showProfile(){
+        TerminalColor.blue();
+        System.out.println("|----------------------------");
+        TerminalColor.cyan();
+        System.out.print("| Username     : "+username);
+        TerminalColor.reset();
+        System.out.print("  -----  ");
+        TerminalColor.cyan();
+        System.out.println(wallet + "$");
+        TerminalColor.yellow();
+        System.out.println("| Phone number : "+phoneNumber);
+        System.out.println("| Email        : "+email);
+        TerminalColor.blue();
+        System.out.println("|----------------------------");
+        TerminalColor.reset();
     }
 
     private String lastGameName() {
