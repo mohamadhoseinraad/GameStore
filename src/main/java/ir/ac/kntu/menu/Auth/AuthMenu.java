@@ -41,9 +41,9 @@ public class AuthMenu extends Menu {
         System.out.println("---- Log in ----");
         TerminalColor.reset();
         System.out.println("User name:");
-        String username = Scan.getLine();
+        String username = Scan.getLine().toUpperCase().trim();
         System.out.println("Password:");
-        String password = Scan.getLine();
+        String password = Scan.getLine().trim();
         if (storeDB.isValidUser(username, password)) {
             User user = storeDB.findUserByUsername(username);
             UserMenu userMenu = new UserMenu(storeDB, user);

@@ -25,9 +25,9 @@ public class User {
     private ArrayList<String> requests;
 
     public User(String username, String phoneNumber, String email, String password) {
-        this.username = username;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
+        this.username = username.toUpperCase().trim();
+        this.phoneNumber = phoneNumber.trim();
+        this.email = email.toLowerCase().trim();
         hashPassword = password.hashCode();
         wallet = 0;
         library = new ArrayList<>();
@@ -40,7 +40,7 @@ public class User {
     }
 
     public void setUsername(String username) {
-        this.username = username;
+        this.username = username.trim().toUpperCase();
     }
 
     public String getPhoneNumber() {
@@ -48,7 +48,7 @@ public class User {
     }
 
     public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+        this.phoneNumber = phoneNumber.trim();
     }
 
     public String getEmail() {
@@ -56,7 +56,7 @@ public class User {
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        this.email = email.trim().toLowerCase();
     }
 
     public boolean setNewPassword(String newPassword, String oldPassword) {
@@ -191,13 +191,16 @@ public class User {
 
     private String lastGameName() {
         String result = "";
-        int i = 5;
-        if (library.size() < 5) {
-            i = library.size();
+        if (library.size() != 0){
+            int i = 5;
+            if (library.size() < 5) {
+                i = library.size();
+            }
+            for (; i > 0; i--) {
+                result += i + " - " + library.get(library.size() - 1 - i) + " \\ ";
+            }
+            return result;
         }
-        for (; i > 0; i--) {
-            result += i + " - " + library.get(library.size() - 1 - i) + " \\ ";
-        }
-        return result;
+        return "You don't have any game! :(";
     }
 }

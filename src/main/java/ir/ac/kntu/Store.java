@@ -40,6 +40,7 @@ public class Store {
     }
 
     public User findUserByUsername(String username) {
+        username = username.toUpperCase();
         for (User user : users) {
             if (user.getUsername().equals(username)) {
                 return user;
@@ -51,6 +52,7 @@ public class Store {
 
     public ArrayList<User> findUserByPhoneNumber(String phoneNumber) {
         ArrayList<User> result = new ArrayList<>();
+        phoneNumber = phoneNumber.trim();
         for (User u : users) {
             if (u.getPhoneNumber().compareTo(phoneNumber) >= 0) {
                 result.add(u);
@@ -61,6 +63,7 @@ public class Store {
 
     public ArrayList<User> findUserByEmail(String email) {
         ArrayList<User> result = new ArrayList<>();
+        email = email.trim().toLowerCase();
         for (User u : users) {
             if (u.getEmail().compareTo(email) >= 0) {
                 result.add(u);
@@ -79,6 +82,7 @@ public class Store {
     }
 
     public boolean isValidUser(String username, String password) {
+        username = username.toUpperCase().trim();
         for (User user : users) {
             if (user.getUsername().equals(username)) {
                 return user.checkPassword(password);
