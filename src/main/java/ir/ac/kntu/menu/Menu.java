@@ -5,11 +5,16 @@ import ir.ac.kntu.TerminalColor;
 
 public abstract class Menu {
 
-    abstract void showMenu();
+    public abstract void showMenu();
 
     public <T extends Enum<T>> T getOption(Class<T> menuEnum) {
         T[] options = menuEnum.getEnumConstants();
-        int choice = Integer.parseInt(Scan.getLine().trim()) - 1;
+        String choiceStr = Scan.getLine().trim();
+        int choice = -1;
+        if (choiceStr.matches("[0-9]+")) {
+            choice = Integer.parseInt(choiceStr) - 1;
+        }
+
         if (choice >= 0 && choice < options.length) {
             return options[choice];
         }

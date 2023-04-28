@@ -6,7 +6,7 @@ import ir.ac.kntu.models.Game;
 
 public class AddGame extends Menu {
     @Override
-    void showMenu() {
+    public void showMenu() {
 
     }
 

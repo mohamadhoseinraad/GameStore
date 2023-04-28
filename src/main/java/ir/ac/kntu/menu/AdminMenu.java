@@ -3,7 +3,7 @@ package ir.ac.kntu.menu;
 public class AdminMenu extends Menu {
 
     @Override
-    void showMenu() {
+    public void showMenu() {
         System.out.println("-------- Admin Menu ---------");
         System.out.println("Chose Option : ");
         System.out.println("1- games");
