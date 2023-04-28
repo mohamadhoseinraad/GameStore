@@ -12,7 +12,7 @@ public class UserMenu extends Menu {
 
     private User user;
 
-    public UserMenu(Store store,User user) {
+    public UserMenu(Store store, User user) {
         this.storeDB = store;
         this.user = user;
     }
@@ -42,11 +42,15 @@ public class UserMenu extends Menu {
                         friends();
                         break;
                     }
+                    case LOGOUT:
+                        System.out.println("Back soon :)");
+                        return;
                     default:
                         System.out.println("Invalid choose");
                 }
             }
         }
+        System.exit(0);
     }
 
     public void profile() {
