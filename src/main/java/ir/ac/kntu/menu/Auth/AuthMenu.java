@@ -4,6 +4,7 @@ import ir.ac.kntu.Scan;
 import ir.ac.kntu.Store;
 import ir.ac.kntu.TerminalColor;
 import ir.ac.kntu.menu.Menu;
+import ir.ac.kntu.menu.User.UserMenu;
 import ir.ac.kntu.models.User;
 
 public class AuthMenu extends Menu {
@@ -44,12 +45,12 @@ public class AuthMenu extends Menu {
         System.out.println("Password:");
         String password = Scan.getLine();
         if (storeDB.isValidUser(username, password)) {
-            TerminalColor.green();
-            System.out.println("Welcome " + username);
-            TerminalColor.reset();
+            User user= storeDB.findUserByUsername(username);
+            UserMenu userMenu = new UserMenu(storeDB,user);
+            userMenu.showMenu();
         } else {
             TerminalColor.red();
-            System.out.println("Username or password incorrect1");
+            System.out.println("Username or password incorrect!");
             TerminalColor.reset();
         }
     }

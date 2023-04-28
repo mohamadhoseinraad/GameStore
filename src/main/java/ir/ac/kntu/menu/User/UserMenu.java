@@ -9,15 +9,20 @@ import ir.ac.kntu.models.User;
 public class UserMenu extends Menu {
 
     private Store storeDB;
+    private User user;
 
-    public UserMenu(Store store) {
+    public UserMenu(Store store,User user) {
         this.storeDB = store;
+        this.user = user;
     }
 
     @Override
     public void showMenu() {
         UserMenuOption option;
-        while ((option = printMenuOptions("Game Store", UserMenuOption.class)) != UserMenuOption.EXIT) {
+        TerminalColor.purple();
+        System.out.println("Welcome " + user.getUsername());
+        TerminalColor.reset();
+        while ((option = printMenuOptions("User Menu", UserMenuOption.class)) != UserMenuOption.EXIT) {
             if (option != null) {
                 switch (option) {
                     case PROFILE: {
