@@ -1,22 +1,23 @@
-package ir.ac.kntu.menu;
+package ir.ac.kntu.menu.Auth;
 
 import ir.ac.kntu.Scan;
 import ir.ac.kntu.Store;
 import ir.ac.kntu.TerminalColor;
+import ir.ac.kntu.menu.Menu;
 import ir.ac.kntu.models.User;
 
-public class StartMenu extends Menu {
+public class AuthMenu extends Menu {
 
     private Store storeDB;
 
-    public StartMenu(Store store) {
+    public AuthMenu(Store store) {
         this.storeDB = store;
     }
 
     @Override
     public void showMenu() {
-        StartOption option;
-        while ((option = printMenuOptions("Game Store", StartOption.class)) != StartOption.EXIT) {
+        AuthMenuOptions option;
+        while ((option = printMenuOptions("Game Store", AuthMenuOptions.class)) != AuthMenuOptions.EXIT) {
             if (option != null) {
                 switch (option) {
                     case LOGIN: {
@@ -48,7 +49,7 @@ public class StartMenu extends Menu {
             TerminalColor.reset();
         } else {
             TerminalColor.red();
-            System.out.println("username of password incorrect1");
+            System.out.println("Username or password incorrect1");
             TerminalColor.reset();
         }
     }
