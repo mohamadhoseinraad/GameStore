@@ -3,22 +3,25 @@ package ir.ac.kntu;
 import java.util.Scanner;
 
 public class Scan {
-    private final static Scanner sc = new Scanner(System.in);
+    private final static Scanner SCAN = new Scanner(System.in);
 
-    private Scan(){
+    private Scan() {
 
     }
 
-    public static int getInt(){
-        return sc.nextInt();
+    public static int getInt() {
+        return SCAN.nextInt();
     }
-    public static String getLine(){
-        return sc.nextLine();
+
+    public static String getLine() {
+        return SCAN.nextLine();
     }
-    public static String getNext(){
-        return sc.next();
+
+    public static String getNext() {
+        return SCAN.next();
     }
-    public static void scanClose(){
-        sc.close();
+
+    public static void scanClose() {
+        SCAN.close();
     }
 }

@@ -2,7 +2,9 @@ package ir.ac.kntu;
 
 public class Community {
     private String username;
+
     private double score;
+
     private String comment;
 
     public Community(String username, double score, String comment) {

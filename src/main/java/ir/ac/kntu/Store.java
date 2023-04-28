@@ -9,7 +9,9 @@ import java.util.Set;
 
 public class Store {
     private Set<User> users;
+
     private Set<Game> games;
+
 
     public Store(Set<User> users, Set<Game> games) {
         this.users = users;
@@ -39,7 +41,7 @@ public class Store {
 
     public User findUserByUsername(String username) {
         for (User user : users) {
-            if (user.getUsername().equals(username)){
+            if (user.getUsername().equals(username)) {
                 return user;
             }
 
@@ -50,8 +52,9 @@ public class Store {
     public ArrayList<User> findUserByPhoneNumber(String phoneNumber) {
         ArrayList<User> result = new ArrayList<>();
         for (User u : users) {
-            if (u.getPhoneNumber().compareTo(phoneNumber) >= 0) ;
-            result.add(u);
+            if (u.getPhoneNumber().compareTo(phoneNumber) >= 0) {
+                result.add(u);
+            }
         }
         return result;
     }
@@ -59,8 +62,9 @@ public class Store {
     public ArrayList<User> findUserByEmail(String email) {
         ArrayList<User> result = new ArrayList<>();
         for (User u : users) {
-            if (u.getEmail().compareTo(email) >= 0) ;
-            result.add(u);
+            if (u.getEmail().compareTo(email) >= 0) {
+                result.add(u);
+            }
         }
         return result;
     }
@@ -69,16 +73,19 @@ public class Store {
         Game newGame = Game.makeGame();
         return games.add(newGame);
     }
-    public boolean addUser(){
+
+    public boolean addUser() {
         User newUser = User.makeUser();
         return users.add(newUser);
     }
-    public boolean addSpecialUser(User user){
+
+    public boolean addSpecialUser(User user) {
         return users.add(user);
     }
-    public boolean isValidUser(String username, String password){
-        for (User user: users){
-            if (user.getUsername().equals(username)){
+
+    public boolean isValidUser(String username, String password) {
+        for (User user : users) {
+            if (user.getUsername().equals(username)) {
                 return user.checkPassword(password);
             }
         }

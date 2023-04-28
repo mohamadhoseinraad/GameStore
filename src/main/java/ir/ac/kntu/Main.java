@@ -31,7 +31,7 @@ public class Main {
 
     public static Option handleOption() {
         int option = Integer.parseInt(Scan.getLine()) - 1;
-        Option options[] = Option.values();
+        Option[] options = Option.values();
         if (option < options.length && option >= 0) {
             return options[option];
         }

@@ -8,7 +8,7 @@ public class StartMenu extends Menu {
 
     private Store storeDB;
 
-    public StartMenu(Store store){
+    public StartMenu(Store store) {
         this.storeDB = store;
     }
 
@@ -16,7 +16,7 @@ public class StartMenu extends Menu {
     public void showMenu() {
         StartOption option;
         while ((option = printMenuOptions("Game Store", StartOption.class)) != StartOption.EXIT) {
-            if (option != null){
+            if (option != null) {
                 switch (option) {
                     case LOGIN: {
                         loginUser();
@@ -32,7 +32,8 @@ public class StartMenu extends Menu {
             }
         }
     }
-    public void loginUser(){
+
+    public void loginUser() {
         TerminalColor.blue();
         System.out.println("---- Log in ----");
         TerminalColor.reset();
@@ -40,12 +41,11 @@ public class StartMenu extends Menu {
         String username = Scan.getLine();
         System.out.println("Password:");
         String password = Scan.getLine();
-        if (storeDB.isValidUser(username,password)){
+        if (storeDB.isValidUser(username, password)) {
             TerminalColor.green();
-            System.out.println("Welcome "+ username);
+            System.out.println("Welcome " + username);
             TerminalColor.reset();
-        }
-        else {
+        } else {
             TerminalColor.red();
             System.out.println("username of password incorrect1");
             TerminalColor.reset();

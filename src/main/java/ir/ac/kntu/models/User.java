@@ -8,12 +8,19 @@ import java.util.Objects;
 
 public class User {
     private String username;
+
     private String phoneNumber;
+
     private String email;
+
     private int hashPassword;
+
     private double wallet;
+
     private ArrayList<String> library;
+
     private ArrayList<String> friends;
+
     private ArrayList<String> requests;
 
     public User(String username, String phoneNumber, String email, String password) {
@@ -144,8 +151,12 @@ public class User {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         User user = (User) o;
         return username == user.getUsername();
     }
@@ -199,7 +210,7 @@ public class User {
             i = library.size();
         }
         for (; i > 0; i--) {
-            result += i + " - " + library.get(library.size() - 1 - i) +" \\ ";
+            result += i + " - " + library.get(library.size() - 1 - i) + " \\ ";
         }
         return result;
     }

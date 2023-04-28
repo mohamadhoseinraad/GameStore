@@ -8,13 +8,20 @@ import java.util.Map;
 import java.util.Objects;
 
 public class Game {
-    public static int gamesNumber =0;
+    public static int gamesNumber = 0;
+
     private final int id;
+
     private String name;
+
     private String details;
+
     private String genre;
+
     private double price;
+
     private double score;
+
     private ArrayList<Community> communities;
 
     public Game(String name, String details, String genre, double price) {
@@ -75,7 +82,7 @@ public class Game {
         this.communities = communities;
     }
 
-    public int getId(){
+    public int getId() {
         return id;
     }
 
@@ -92,8 +99,12 @@ public class Game {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Game game = (Game) o;
         return id == game.getId() && name == game.getName() && genre == game.getGenre();
     }
@@ -102,6 +113,7 @@ public class Game {
     public int hashCode() {
         return Objects.hash(id, name, genre);
     }
+
     public static Game makeGame() {
         System.out.println("Pleas enter game name :");
         String name = Scan.getLine();
@@ -112,6 +124,6 @@ public class Game {
         System.out.println("Pleas enter price :");
         double price = Double.parseDouble(Scan.getLine());
 
-        return new Game(name,detail,genre,price);
+        return new Game(name, detail, genre, price);
     }
 }

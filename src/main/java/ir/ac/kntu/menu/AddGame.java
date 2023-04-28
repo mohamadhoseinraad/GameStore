@@ -4,12 +4,13 @@ import ir.ac.kntu.Scan;
 import ir.ac.kntu.Store;
 import ir.ac.kntu.models.Game;
 
-public class AddGame extends Menu{
+public class AddGame extends Menu {
     @Override
     void showMenu() {
 
     }
-    public Game addGame(){
+
+    public Game addGame() {
         System.out.println("Enter name of game:");
         String gameName = Scan.getLine();
         System.out.println("Enter genre:");
@@ -19,7 +20,7 @@ public class AddGame extends Menu{
         System.out.println("Enter detail:");
         String gameDetail = Scan.getLine();
 
-        return new Game(gameName,gameDetail,gameGenre,gamePrice);
+        return new Game(gameName, gameDetail, gameGenre, gamePrice);
 
     }
 }
