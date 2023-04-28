@@ -26,7 +26,7 @@ public class AuthMenu extends Menu {
                         break;
                     }
                     case SING_UP: {
-                        sing_up();
+                        singup();
                         break;
                     }
                     default:
@@ -45,8 +45,8 @@ public class AuthMenu extends Menu {
         System.out.println("Password:");
         String password = Scan.getLine();
         if (storeDB.isValidUser(username, password)) {
-            User user= storeDB.findUserByUsername(username);
-            UserMenu userMenu = new UserMenu(storeDB,user);
+            User user = storeDB.findUserByUsername(username);
+            UserMenu userMenu = new UserMenu(storeDB, user);
             userMenu.showMenu();
         } else {
             TerminalColor.red();
@@ -55,7 +55,7 @@ public class AuthMenu extends Menu {
         }
     }
 
-    public void sing_up() {
+    public void singup() {
         TerminalColor.blue();
         System.out.println("---- Log in ----");
         TerminalColor.reset();
@@ -70,19 +70,15 @@ public class AuthMenu extends Menu {
         TerminalColor.red();
         if (storeDB.findUserByUsername(username) != null) {
             System.out.println("This username already taken!");
-        }
-        else if (!email.matches(".*@.*")) {
+        } else if (!email.matches(".*@.*")) {
             System.out.println("Email is not valid!");
-        }
-        else if (password.length() < 8) {
+        } else if (password.length() < 8) {
             System.out.println("Password length must 8 or more!");
-        }
-        else {
-            boolean result = storeDB.addUser(new User(username,phoneNumber,email,password));
-            if (!result){
+        } else {
+            boolean result = storeDB.addUser(new User(username, phoneNumber, email, password));
+            if (!result) {
                 System.out.println("Sing up unsuccessfully!");
-            }
-            else {
+            } else {
                 TerminalColor.green();
                 System.out.println("Sing up successfully.Now you can log in");
             }
