@@ -60,18 +60,21 @@ public class AuthMenu extends Menu {
         System.out.println("---- Log in ----");
         TerminalColor.reset();
         System.out.println("User name:");
-        String username = Scan.getLine();
+        String username = Scan.getLine().trim().toUpperCase();
         System.out.println("Phone number:");
-        String phoneNumber = Scan.getLine();
+        String phoneNumber = Scan.getLine().trim();
         System.out.println("Email:");
-        String email = Scan.getLine();
+        String email = Scan.getLine().toLowerCase().trim();
         System.out.println("Password:");
-        String password = Scan.getLine();
+        String password = Scan.getLine().trim();
         TerminalColor.red();
         if (storeDB.findUserByUsername(username) != null) {
             System.out.println("This username already taken!");
-        } else if (!email.matches(".*@.*")) {
+        } else if (!email.matches(".+@.+")) {
             System.out.println("Email is not valid!");
+        } else if (!phoneNumber.matches("[0-9+]+")) {
+            System.out.println("phone number is not valid!");
+            return;
         } else if (password.length() < 8) {
             System.out.println("Password length must 8 or more!");
         } else {

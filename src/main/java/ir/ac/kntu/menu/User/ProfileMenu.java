@@ -5,6 +5,7 @@ import ir.ac.kntu.Store;
 import ir.ac.kntu.TerminalColor;
 import ir.ac.kntu.menu.Menu;
 import ir.ac.kntu.models.User;
+import jdk.jshell.Snippet;
 
 public class ProfileMenu extends Menu {
     private Store storeDB;
@@ -86,7 +87,7 @@ public class ProfileMenu extends Menu {
             System.out.println("New email is not valid!");
             return;
         }
-        if (newEmail.equals(user.getEmail())){
+        if (newEmail.equals(user.getEmail())) {
             System.out.println("New email is same as previous email !");
             return;
         }
@@ -104,7 +105,7 @@ public class ProfileMenu extends Menu {
             System.out.println("New phone number is not valid!");
             return;
         }
-        if (newPhoneNumber.equals(user.getEmail())){
+        if (newPhoneNumber.equals(user.getEmail())) {
             System.out.println("New phone number is same as previous email !");
             return;
         }
@@ -115,7 +116,22 @@ public class ProfileMenu extends Menu {
     }
 
     public void chargeWallet() {
-        System.out.println("wallet");
+        System.out.println("how much you want amount ? (1+ $)");
+        String amount = Scan.getLine();
+        TerminalColor.red();
+        int errorCount =0;
+        while (!amount.matches("[0-9.]+") || Double.parseDouble(amount) < 1){
+            errorCount++;
+            System.out.println("Invalid amount ! Try again :");
+            amount = Scan.getLine();
+            if (errorCount > 2){
+                System.out.println("Charge wallet fail !");
+                return;
+            }
+        }
+        user.chargeWallet(Double.parseDouble(amount));
+        TerminalColor.green();
+        System.out.println("Your wallet charged.Inventory : " + user.getWallet());
     }
 
     public void changePassword() {
