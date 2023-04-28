@@ -132,9 +132,26 @@ public class ProfileMenu extends Menu {
         user.chargeWallet(Double.parseDouble(amount));
         TerminalColor.green();
         System.out.println("Your wallet charged.Inventory : " + user.getWallet());
+        TerminalColor.reset();
     }
 
     public void changePassword() {
-        System.out.println("passs");
+        int error = 0;
+        while (error < 3){
+            System.out.println("Enter old password:");
+            String oldPassword = Scan.getLine().trim();
+            System.out.println("Enter new password:");
+            String newPassword = Scan.getLine().trim();
+            if (user.setNewPassword(newPassword, oldPassword)){
+                TerminalColor.green();
+                System.out.println("Password successfully !");
+                TerminalColor.reset();
+                return;
+            }
+            TerminalColor.red();
+            System.out.println("Fail change password ! Try again");
+            TerminalColor.reset();
+            error++;
+        }
     }
 }
