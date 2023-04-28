@@ -170,7 +170,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "Username :" + username + " | Email : " + email + " | 5 last Game  \n" + lastGameName();
+        return "Username :" + username + " | Email : " + email + lastGameName();
     }
     public void showProfile(){
         TerminalColor.blue();
@@ -190,7 +190,8 @@ public class User {
     }
 
     private String lastGameName() {
-        String result = "";
+
+        String result = " | 5 last Game  \n";
         if (library.size() != 0){
             int i = 5;
             if (library.size() < 5) {
@@ -201,6 +202,6 @@ public class User {
             }
             return result;
         }
-        return "You don't have any game! :(";
+        return " | No Games";
     }
 }

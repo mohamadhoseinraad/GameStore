@@ -11,20 +11,19 @@ public class ProfileMenu extends Menu {
 
     private User user;
 
-    public ProfileMenu(Store storeDB, User user){
+    public ProfileMenu(Store storeDB, User user) {
         this.storeDB = storeDB;
         this.user = user;
     }
+
     @Override
     public void showMenu() {
         ProfileMenuOptions option;
-        user.showProfile();
-        while ((option = printMenuOptions("Profile", ProfileMenuOptions.class)) != ProfileMenuOptions.EXIT) {
+        while (userProfile() && (option = printMenuOptions("Profile", ProfileMenuOptions.class)) != ProfileMenuOptions.EXIT) {
             if (option != null) {
-                user.showProfile();
                 switch (option) {
                     case CHANGE_USERNAME: {
-                            changeUsername();
+                        changeUsername();
                         break;
                     }
                     case CHANGE_PHONE_NUMBER: {
@@ -39,7 +38,7 @@ public class ProfileMenu extends Menu {
                         chargeWallet();
                         break;
                     }
-                    case CHANGE_PASSWORD:{
+                    case CHANGE_PASSWORD: {
                         changePassword();
                         break;
                     }
@@ -52,20 +51,50 @@ public class ProfileMenu extends Menu {
         }
         System.exit(0);
     }
-    public void changeUsername(){
+
+    public boolean userProfile() {
+        user.showProfile();
+        return true;
+    }
+
+    public void changeUsername() {
         System.out.println("Enter your new username:");
         String newUsername = Scan.getLine().toUpperCase();
+        TerminalColor.red();
+        if (newUsername.equals(user.getUsername())) {
+            System.out.println("this username is same!");
+            TerminalColor.reset();
+            return;
+        }
+        User temp = storeDB.findUserByUsername(newUsername);
+        if (temp != null && !temp.equals(user)) {
+            System.out.println("this username is already taken!");
+            TerminalColor.reset();
+            return;
+        }
+        user.setUsername(newUsername);
+        TerminalColor.green();
+        System.out.println("Username changed :D");
+        TerminalColor.reset();
+        ;
     }
-    public void changeEmail(){
+
+    public void changeEmail() {
+        for (User ss : storeDB.getUsers()) {
+            System.out.println(ss);
+        }
         System.out.println("email");
     }
-    public void changePhoneNumber(){
+
+    public void changePhoneNumber() {
         System.out.println("phone");
     }
-    public void chargeWallet(){
+
+    public void chargeWallet() {
         System.out.println("wallet");
     }
-    public void changePassword(){
+
+    public void changePassword() {
         System.out.println("passs");
     }
 }
