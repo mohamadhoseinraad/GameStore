@@ -166,37 +166,6 @@ public class User {
         return Objects.hash(username);
     }
 
-    public static User makeUser() {
-        System.out.println("Pleas enter your username : ");
-        String username = Scan.getLine().trim();
-        System.out.println("Pleas enter your phone number : ");
-        String phoneNumber = Scan.getLine().trim();
-        System.out.println("Pleas enter your email : ");
-        String email;
-        while (true) {
-            email = Scan.getLine();
-            if (email.matches(".+@.+")) {
-                break;
-            }
-            System.out.println("Error please enter valid email :");
-        }
-        String password;
-        String passwordVarify;
-        while (true) {
-            System.out.println("Pleas enter your password :");
-            password = Scan.getLine();
-            if (password.length() >= 8) {
-                System.out.println("Pleas enter your password again :");
-                passwordVarify = Scan.getLine();
-                if (password.equals(passwordVarify)) {
-                    return new User(username, phoneNumber, email, password);
-                }
-                System.out.println("Error : passwords are not same try again");
-            } else {
-                System.out.println("Error Password must be 8 or more!");
-            }
-        }
-    }
 
     @Override
     public String toString() {

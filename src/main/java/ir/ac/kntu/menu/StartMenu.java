@@ -3,6 +3,7 @@ package ir.ac.kntu.menu;
 import ir.ac.kntu.Scan;
 import ir.ac.kntu.Store;
 import ir.ac.kntu.TerminalColor;
+import ir.ac.kntu.models.User;
 
 public class StartMenu extends Menu {
 
@@ -23,7 +24,7 @@ public class StartMenu extends Menu {
                         break;
                     }
                     case SING_UP: {
-                        System.out.println("Sing up");
+                        sing_up();
                         break;
                     }
                     default:
@@ -50,5 +51,40 @@ public class StartMenu extends Menu {
             System.out.println("username of password incorrect1");
             TerminalColor.reset();
         }
+    }
+
+    public void sing_up() {
+        TerminalColor.blue();
+        System.out.println("---- Log in ----");
+        TerminalColor.reset();
+        System.out.println("User name:");
+        String username = Scan.getLine();
+        System.out.println("Phone number:");
+        String phoneNumber = Scan.getLine();
+        System.out.println("Email:");
+        String email = Scan.getLine();
+        System.out.println("Password:");
+        String password = Scan.getLine();
+        TerminalColor.red();
+        if (storeDB.findUserByUsername(username) != null) {
+            System.out.println("This username already taken!");
+        }
+        else if (!email.matches(".*@.*")) {
+            System.out.println("Email is not valid!");
+        }
+        else if (password.length() < 8) {
+            System.out.println("Password length must 8 or more!");
+        }
+        else {
+            boolean result = storeDB.addUser(new User(username,phoneNumber,email,password));
+            if (!result){
+                System.out.println("Sing up unsuccessfully!");
+            }
+            else {
+                TerminalColor.green();
+                System.out.println("Sing up successfully.Now you can log in");
+            }
+        }
+        TerminalColor.reset();
     }
 }

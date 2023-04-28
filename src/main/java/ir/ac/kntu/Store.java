@@ -74,13 +74,8 @@ public class Store {
         return games.add(newGame);
     }
 
-    public boolean addUser() {
-        User newUser = User.makeUser();
+    public boolean addUser(User newUser) {
         return users.add(newUser);
-    }
-
-    public boolean addSpecialUser(User user) {
-        return users.add(user);
     }
 
     public boolean isValidUser(String username, String password) {
