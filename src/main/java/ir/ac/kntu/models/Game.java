@@ -2,6 +2,7 @@ package ir.ac.kntu.models;
 
 import ir.ac.kntu.Community;
 import ir.ac.kntu.Scan;
+import ir.ac.kntu.TerminalColor;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -88,13 +89,41 @@ public class Game {
 
     @Override
     public String toString() {
-        return "Game{\n" +
-                "name='" + name + '\'' +
-                ", genre='" + genre + '\'' +
-                ", price=" + price +
-                ", score=" + score +
-                ", details='\n" + details +
-                "\n}";
+        return
+                "ID-" + id +
+                " name : " + name +
+                " ,genre :" + genre +
+                " ,price :" + price +
+                " ,score :" + score +
+                " ,details:" +
+                details + "\n";
+    }
+    public void showGame(){
+        TerminalColor.blue();
+        System.out.println("|----------------------------");
+        TerminalColor.cyan();
+        System.out.print("| Name     : "+name);
+        TerminalColor.reset();
+        System.out.print("  -----  ");
+        TerminalColor.cyan();
+        System.out.println(price + "$ coast");
+        TerminalColor.yellow();
+        System.out.print("| Genre : "+genre);
+        System.out.print(" | Score : ");
+        scoreColor();
+        System.out.println(score);
+        TerminalColor.blue();
+        System.out.println("|----------------------------");
+        TerminalColor.reset();
+    }
+    private void scoreColor(){
+        if (score < 3){
+            TerminalColor.red();
+        } else if (score <6) {
+            TerminalColor.yellow();
+        } else  {
+            TerminalColor.green();
+        }
     }
 
     @Override
