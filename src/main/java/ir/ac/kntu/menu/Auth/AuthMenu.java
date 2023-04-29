@@ -3,9 +3,11 @@ package ir.ac.kntu.menu.Auth;
 import ir.ac.kntu.Scan;
 import ir.ac.kntu.Store;
 import ir.ac.kntu.TerminalColor;
+import ir.ac.kntu.menu.Admin.AdminMenu;
 import ir.ac.kntu.menu.Menu;
 import ir.ac.kntu.menu.User.UserMenu;
 import ir.ac.kntu.models.User;
+import ir.ac.kntu.models.UserType;
 
 public class AuthMenu extends Menu {
 
@@ -46,8 +48,14 @@ public class AuthMenu extends Menu {
         String password = Scan.getLine().trim();
         if (storeDB.isValidUser(username, password)) {
             User user = storeDB.findUserByUsername(username);
-            UserMenu userMenu = new UserMenu(storeDB, user);
-            userMenu.showMenu();
+            if (user.userType == UserType.USER) {
+                UserMenu userMenu = new UserMenu(storeDB, user);
+                userMenu.showMenu();
+            }
+            else {
+                AdminMenu adminMenu = new AdminMenu(storeDB, user);
+                adminMenu.showMenu();
+            }
         } else {
             TerminalColor.red();
             System.out.println("Username or password incorrect!");
@@ -78,7 +86,7 @@ public class AuthMenu extends Menu {
         } else if (password.length() < 8) {
             System.out.println("Password length must 8 or more!");
         } else {
-            boolean result = storeDB.addUser(new User(username, phoneNumber, email, password));
+            boolean result = storeDB.addUser(new User(username, phoneNumber, email, password, UserType.USER));
             if (!result) {
                 System.out.println("Sing up unsuccessfully!");
             } else {

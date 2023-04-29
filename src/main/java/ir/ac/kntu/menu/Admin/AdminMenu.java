@@ -9,9 +9,11 @@ import ir.ac.kntu.models.User;
 public class AdminMenu extends Menu {
 
     private Store storeDB;
+    private User admin;
 
-    public AdminMenu(Store store) {
+    public AdminMenu(Store store, User admin) {
         this.storeDB = store;
+        this.admin = admin;
     }
 
     @Override

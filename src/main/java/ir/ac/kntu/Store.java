@@ -2,6 +2,7 @@ package ir.ac.kntu;
 
 import ir.ac.kntu.models.Game;
 import ir.ac.kntu.models.User;
+import ir.ac.kntu.models.UserType;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -89,5 +90,9 @@ public class Store {
             }
         }
         return false;
+    }
+    public boolean addAdmin(String username, String password){
+        User admin = new User(username,"","",password, UserType.ADMIN);
+        return users.add(admin);
     }
 }

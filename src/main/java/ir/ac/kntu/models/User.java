@@ -18,13 +18,15 @@ public class User {
 
     private double wallet;
 
+    public final UserType userType;
+
     private ArrayList<String> library;
 
     private ArrayList<String> friends;
 
     private ArrayList<String> requests;
 
-    public User(String username, String phoneNumber, String email, String password) {
+    public User(String username, String phoneNumber, String email, String password,UserType type) {
         this.username = username.toUpperCase().trim();
         this.phoneNumber = phoneNumber.trim();
         this.email = email.toLowerCase().trim();
@@ -33,7 +35,9 @@ public class User {
         library = new ArrayList<>();
         friends = new ArrayList<>();
         requests = new ArrayList<>();
+        userType = type;
     }
+
 
     public String getUsername() {
         return username;
