@@ -98,6 +98,7 @@ public class Game {
                 " ,details:" +
                 details + "\n";
     }
+
     public void showGame(){
         TerminalColor.blue();
         System.out.println("|----------------------------");
@@ -116,6 +117,7 @@ public class Game {
         System.out.println("|----------------------------");
         TerminalColor.reset();
     }
+
     private void scoreColor(){
         if (score < 3){
             TerminalColor.red();

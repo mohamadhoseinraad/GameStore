@@ -176,6 +176,7 @@ public class User {
     public String toString() {
         return "Username :" + username + " | Email : " + email + lastGameName();
     }
+
     public void showProfile(){
         TerminalColor.blue();
         System.out.println("|----------------------------");

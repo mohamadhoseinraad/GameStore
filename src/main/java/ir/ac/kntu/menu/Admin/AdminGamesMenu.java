@@ -7,6 +7,7 @@ import ir.ac.kntu.models.User;
 public class AdminGamesMenu extends Menu {
 
     private Store storeDB;
+
     private User admin;
 
     public AdminGamesMenu(Store storeDB, User admin) {
@@ -42,13 +43,16 @@ public class AdminGamesMenu extends Menu {
         }
         System.exit(0);
     }
+
     public void addGame(){
-
+        return;
     }
+
     public void editGame(){
-
+        return;
     }
-    public void removeGame(){
 
+    public void removeGame(){
+        return;
     }
 }

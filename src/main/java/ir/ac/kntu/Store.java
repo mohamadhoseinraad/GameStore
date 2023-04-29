@@ -91,6 +91,7 @@ public class Store {
         }
         return false;
     }
+
     public boolean addAdmin(String username, String password){
         User admin = new User(username,"","",password, UserType.ADMIN);
         return users.add(admin);

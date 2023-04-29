@@ -9,6 +9,7 @@ import ir.ac.kntu.models.User;
 public class AdminMenu extends Menu {
 
     private Store storeDB;
+
     private User admin;
 
     public AdminMenu(Store store, User admin) {
