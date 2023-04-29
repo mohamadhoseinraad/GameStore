@@ -73,8 +73,7 @@ public class Store {
         return result;
     }
 
-    public boolean addGame() {
-        Game newGame = Game.makeGame();
+    public boolean addGame(Game newGame) {
         return games.add(newGame);
     }
 

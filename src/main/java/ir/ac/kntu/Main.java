@@ -14,11 +14,6 @@ public class Main {
         Game g1 = new Game("swd","3", "we",1);
         Game g2 = new Game("swd","3", "we",1);
         Game g3 = new Game("swd","3", "we",1);
-        System.out.println(g1.getId());
-        System.out.println(g2.getId());
-        System.out.println(g3.getId());
-        System.out.println(g1);
-        g1.showGame();
         store.addUser(user);
         store.addUser(user2);
         store.addUser(amin);

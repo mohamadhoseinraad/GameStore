@@ -1,7 +1,9 @@
 package ir.ac.kntu.menu.Admin;
 
 import ir.ac.kntu.Store;
+import ir.ac.kntu.TerminalColor;
 import ir.ac.kntu.menu.Menu;
+import ir.ac.kntu.models.Game;
 import ir.ac.kntu.models.User;
 
 public class AdminGamesMenu extends Menu {
@@ -45,6 +47,14 @@ public class AdminGamesMenu extends Menu {
     }
 
     public void addGame(){
+        Game newGame = Game.makeGame();
+        if (newGame != null){
+            if (storeDB.addGame(newGame)){
+                TerminalColor.green();
+                System.out.println(newGame.getName()+" added to dataBase");
+                TerminalColor.reset();
+            }
+        }
         return;
     }
 

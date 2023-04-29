@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.Objects;
 
-public class Game {
+public class Game implements Cloneable{
     public static int gamesNumber = 0;
 
     private final int id;
@@ -145,6 +145,11 @@ public class Game {
         return Objects.hash(id, name, genre);
     }
 
+    public Object clone() throws CloneNotSupportedException
+    {
+        return super.clone();
+    }
+
     public static Game makeGame() {
         System.out.println("Pleas enter game name :");
         String name = Scan.getLine();
@@ -153,8 +158,20 @@ public class Game {
         System.out.println("Pleas enter detail of game :");
         String detail = Scan.getLine();
         System.out.println("Pleas enter price :");
-        double price = Double.parseDouble(Scan.getLine());
-
+        String priceSrt = Scan.getLine();
+        TerminalColor.red();
+        if (!priceSrt.matches("[0-9.]+")){
+            System.out.println("Price is not Valid!");
+            TerminalColor.reset();
+            return null;
+        }
+        if (name.length() < 3 || genre.length() < 3 || detail.length() < 3){
+            System.out.println("Name Genre and detail must be more than 3 character!");
+            TerminalColor.reset();
+            return null;
+        }
+        TerminalColor.reset();
+        double price = Double.parseDouble(priceSrt);
         return new Game(name, detail, genre, price);
     }
 }
