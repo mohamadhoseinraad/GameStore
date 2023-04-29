@@ -19,7 +19,7 @@ public class AdminMenu extends Menu {
     @Override
     public void showMenu() {
         AdminMenuOption option;
-        while ((option = printMenuOptions("Game Store", AdminMenuOption.class)) != AdminMenuOption.LOGOUT) {
+        while ((option = printMenuOptions("Amin Menu", AdminMenuOption.class)) != AdminMenuOption.EXIT) {
             if (option != null) {
                 switch (option) {
                     case USERS: {
@@ -30,11 +30,15 @@ public class AdminMenu extends Menu {
                         games();
                         break;
                     }
+                    case LOGOUT: {
+                        return;
+                    }
                     default:
                         System.out.println("Invalid choose");
                 }
             }
         }
+        System.exit(0);
     }
 
     public void users() {
@@ -42,6 +46,7 @@ public class AdminMenu extends Menu {
     }
 
     public void games() {
-
+        AdminGamesMenu adminGamesMenu = new AdminGamesMenu(storeDB, admin);
+        adminGamesMenu.showMenu();
     }
 }
