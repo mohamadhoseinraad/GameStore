@@ -51,8 +51,7 @@ public class AuthMenu extends Menu {
             if (user.userType == UserType.USER) {
                 UserMenu userMenu = new UserMenu(storeDB, user);
                 userMenu.showMenu();
-            }
-            else {
+            } else {
                 AdminMenu adminMenu = new AdminMenu(storeDB, user);
                 adminMenu.showMenu();
             }
@@ -76,6 +75,11 @@ public class AuthMenu extends Menu {
         System.out.println("Password:");
         String password = Scan.getLine().trim();
         TerminalColor.red();
+        if (username.length() < 3) {
+            System.out.println("Enter valid username ( must be 3 or more character)");
+            TerminalColor.reset();
+            return;
+        }
         if (storeDB.findUserByUsername(username) != null) {
             System.out.println("This username already taken!");
         } else if (!email.matches(".+@.+")) {

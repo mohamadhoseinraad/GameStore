@@ -62,6 +62,11 @@ public class ProfileMenu extends Menu {
         System.out.println("Enter your new username:");
         String newUsername = Scan.getLine().toUpperCase().trim();
         TerminalColor.red();
+        if (newUsername.length() < 3){
+            System.out.println("Username must be 3  or more character!");
+            TerminalColor.reset();
+            return;
+        }
         if (newUsername.equals(user.getUsername())) {
             System.out.println("this username is same!");
             TerminalColor.reset();
@@ -142,6 +147,12 @@ public class ProfileMenu extends Menu {
             String oldPassword = Scan.getLine().trim();
             System.out.println("Enter new password:");
             String newPassword = Scan.getLine().trim();
+            if (newPassword.length() <8){
+                TerminalColor.red();
+                System.out.println("New password must be 8 or more character");
+                TerminalColor.reset();
+                return;
+            }
             if (user.setNewPassword(newPassword, oldPassword)){
                 TerminalColor.green();
                 System.out.println("Password successfully !");
