@@ -4,9 +4,7 @@ import ir.ac.kntu.models.Game;
 import ir.ac.kntu.models.User;
 import ir.ac.kntu.models.UserType;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class Store {
     private Set<User> users;
@@ -57,6 +55,15 @@ public class Store {
         for (User u : users) {
             if (u.getPhoneNumber().compareTo(phoneNumber) >= 0) {
                 result.add(u);
+            }
+        }
+        return result;
+    }
+    public ArrayList<Game> findGameByName(String name){
+        ArrayList<Game> result = new ArrayList<>();
+        for (Game game: games){
+            if (game.getName().compareTo(name) >= 0){
+                result.add(game);
             }
         }
         return result;

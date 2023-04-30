@@ -1,10 +1,13 @@
 package ir.ac.kntu.menu.Admin;
 
+import ir.ac.kntu.Scan;
 import ir.ac.kntu.Store;
 import ir.ac.kntu.TerminalColor;
 import ir.ac.kntu.menu.Menu;
 import ir.ac.kntu.models.Game;
 import ir.ac.kntu.models.User;
+
+import java.util.ArrayList;
 
 public class AdminGamesMenu extends Menu {
 
@@ -63,6 +66,26 @@ public class AdminGamesMenu extends Menu {
     }
 
     public void removeGame(){
+        System.out.println("Search Name of gmae you want to delete :");
+        String name = Scan.getLine();
+        ArrayList<Game> result = storeDB.findGameByName(name);
+        if (result.size() == 0){
+            System.out.println("Not found");
+        }
+        else {
+            int i = 1;
+            for (Game game : result){
+                TerminalColor.blue();
+                System.out.print(i);
+                TerminalColor.yellow();
+                System.out.print(" | ");
+                TerminalColor.blue();
+                System.out.println(game);
+                TerminalColor.reset();
+                i++;
+            }
+        }
+
         return;
     }
 }
