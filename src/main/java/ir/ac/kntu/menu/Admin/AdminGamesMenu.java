@@ -49,32 +49,31 @@ public class AdminGamesMenu extends Menu {
         System.exit(0);
     }
 
-    public void addGame(){
+    public void addGame() {
         Game newGame = Game.makeGame();
-        if (newGame != null){
-            if (storeDB.addGame(newGame)){
+        if (newGame != null) {
+            if (storeDB.addGame(newGame)) {
                 TerminalColor.green();
-                System.out.println(newGame.getName()+" added to dataBase");
+                System.out.println(newGame.getName() + " added to dataBase");
                 TerminalColor.reset();
             }
         }
         return;
     }
 
-    public void editGame(){
+    public void editGame() {
         return;
     }
 
-    public void removeGame(){
+    public void removeGame() {
         System.out.println("Search Name of gmae you want to delete :");
         String name = Scan.getLine();
         ArrayList<Game> result = storeDB.findGameByName(name);
-        if (result.size() == 0){
+        if (result.size() == 0) {
             System.out.println("Not found");
-        }
-        else {
+        } else {
             int i = 1;
-            for (Game game : result){
+            for (Game game : result) {
                 TerminalColor.blue();
                 System.out.print(i);
                 TerminalColor.yellow();

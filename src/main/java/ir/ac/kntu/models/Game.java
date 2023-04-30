@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.Objects;
 
-public class Game implements Cloneable{
+public class Game implements Cloneable {
     public static int gamesNumber = 0;
 
     private final int id;
@@ -91,25 +91,25 @@ public class Game implements Cloneable{
     public String toString() {
         return
                 "ID-" + id +
-                " name : " + name +
-                " ,genre :" + genre +
-                " ,price :" + price +
-                " ,score :" + score +
-                " ,details:" +
-                details + "\n";
+                        " name : " + name +
+                        " ,genre :" + genre +
+                        " ,price :" + price +
+                        " ,score :" + score +
+                        " ,details:" +
+                        details + "\n";
     }
 
-    public void showGame(){
+    public void showGame() {
         TerminalColor.blue();
         System.out.println("|----------------------------");
         TerminalColor.cyan();
-        System.out.print("| Name     : "+name);
+        System.out.print("| Name     : " + name);
         TerminalColor.reset();
         System.out.print("  -----  ");
         TerminalColor.cyan();
         System.out.println(price + "$ coast");
         TerminalColor.yellow();
-        System.out.print("| Genre : "+genre);
+        System.out.print("| Genre : " + genre);
         System.out.print(" | Score : ");
         scoreColor();
         System.out.println(score);
@@ -118,12 +118,12 @@ public class Game implements Cloneable{
         TerminalColor.reset();
     }
 
-    private void scoreColor(){
-        if (score < 3){
+    private void scoreColor() {
+        if (score < 3) {
             TerminalColor.red();
-        } else if (score <6) {
+        } else if (score < 6) {
             TerminalColor.yellow();
-        } else  {
+        } else {
             TerminalColor.green();
         }
     }
@@ -145,8 +145,7 @@ public class Game implements Cloneable{
         return Objects.hash(id, name, genre);
     }
 
-    public Object clone() throws CloneNotSupportedException
-    {
+    public Object clone() throws CloneNotSupportedException {
         return super.clone();
     }
 
@@ -160,12 +159,12 @@ public class Game implements Cloneable{
         System.out.println("Pleas enter price :");
         String priceSrt = Scan.getLine();
         TerminalColor.red();
-        if (!priceSrt.matches("[0-9.]+")){
+        if (!priceSrt.matches("[0-9.]+")) {
             System.out.println("Price is not Valid!");
             TerminalColor.reset();
             return null;
         }
-        if (name.length() < 3 || genre.length() < 3 || detail.length() < 3){
+        if (name.length() < 3 || genre.length() < 3 || detail.length() < 3) {
             System.out.println("Name Genre and detail must be more than 3 character!");
             TerminalColor.reset();
             return null;

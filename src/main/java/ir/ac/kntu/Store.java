@@ -59,10 +59,11 @@ public class Store {
         }
         return result;
     }
-    public ArrayList<Game> findGameByName(String name){
+
+    public ArrayList<Game> findGameByName(String name) {
         ArrayList<Game> result = new ArrayList<>();
-        for (Game game: games){
-            if (game.getName().compareTo(name) >= 0){
+        for (Game game : games) {
+            if (game.getName().compareTo(name) >= 0) {
                 result.add(game);
             }
         }
@@ -98,8 +99,8 @@ public class Store {
         return false;
     }
 
-    public boolean addAdmin(String username, String password){
-        User admin = new User(username,"","",password, UserType.ADMIN);
+    public boolean addAdmin(String username, String password) {
+        User admin = new User(username, "", "", password, UserType.ADMIN);
         return users.add(admin);
     }
 }
