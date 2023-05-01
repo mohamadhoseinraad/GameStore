@@ -11,10 +11,9 @@ public class Store {
 
     private Set<Game> games;
 
-
     public Store(Set<User> users, Set<Game> games) {
-        this.users = users;
-        this.games = games;
+        this.users = new HashSet<>(users);
+        this.games = new HashSet<>(games);
     }
 
     public Store() {
@@ -23,19 +22,19 @@ public class Store {
     }
 
     public Set<User> getUsers() {
-        return users;
+        return new HashSet<>(users);
     }
 
     public void setUsers(Set<User> users) {
-        this.users = users;
+        this.users = new HashSet<>(users);
     }
 
     public Set<Game> getGames() {
-        return games;
+        return new HashSet<>(games);
     }
 
     public void setGames(Set<Game> games) {
-        this.games = games;
+        this.games = new HashSet<>(games);
     }
 
     public User findUserByUsername(String username) {
@@ -44,14 +43,12 @@ public class Store {
             if (user.getUsername().equals(username)) {
                 return user;
             }
-
         }
         return null;
     }
 
     public ArrayList<User> findUserByPhoneNumber(String phoneNumber) {
         ArrayList<User> result = new ArrayList<>();
-        phoneNumber = phoneNumber.trim();
         for (User u : users) {
             if (u.getPhoneNumber().compareTo(phoneNumber) >= 0) {
                 result.add(u);
@@ -63,7 +60,7 @@ public class Store {
     public ArrayList<Game> findGameByName(String name) {
         ArrayList<Game> result = new ArrayList<>();
         for (Game game : games) {
-            if (game.getName().compareTo(name) >= 0) {
+            if (game.getName().startsWith(name)) {
                 result.add(game);
             }
         }
@@ -72,9 +69,8 @@ public class Store {
 
     public ArrayList<User> findUserByEmail(String email) {
         ArrayList<User> result = new ArrayList<>();
-        email = email.trim().toLowerCase();
         for (User u : users) {
-            if (u.getEmail().compareTo(email) >= 0) {
+            if (u.getEmail().equals(email)) {
                 result.add(u);
             }
         }
@@ -82,14 +78,28 @@ public class Store {
     }
 
     public boolean addGame(Game newGame) {
-        return games.add(newGame);
+        String name = new String(newGame.getName());
+        String detail = new String(newGame.getDetails());
+        String genre = new String(newGame.getGenre());
+        double price = newGame.getPrice();
+        Game game = new Game(name, detail, genre, price);
+        return games.add(game);
+    }
+
+    public boolean removeGame(Game game) {
+        for (Game gg : games) {
+            if (gg.equals(game)) {
+                return games.remove(game);
+            }
+        }
+        return false;
     }
 
     public boolean addUser(User newUser) {
         return users.add(newUser);
     }
 
-    public boolean isValidUser(String username, String password) {
+    public boolean loginUser(String username, String password) {
         username = username.toUpperCase().trim();
         for (User user : users) {
             if (user.getUsername().equals(username)) {

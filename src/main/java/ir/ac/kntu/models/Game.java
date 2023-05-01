@@ -145,10 +145,6 @@ public class Game implements Cloneable {
         return Objects.hash(id, name, genre);
     }
 
-    public Object clone() throws CloneNotSupportedException {
-        return super.clone();
-    }
-
     public static Game makeGame() {
         System.out.println("Pleas enter game name :");
         String name = Scan.getLine();

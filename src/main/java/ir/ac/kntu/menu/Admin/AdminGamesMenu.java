@@ -66,25 +66,10 @@ public class AdminGamesMenu extends Menu {
     }
 
     public void removeGame() {
-        System.out.println("Search Name of gmae you want to delete :");
-        String name = Scan.getLine();
-        ArrayList<Game> result = storeDB.findGameByName(name);
-        if (result.size() == 0) {
-            System.out.println("Not found");
-        } else {
-            int i = 1;
-            for (Game game : result) {
-                TerminalColor.blue();
-                System.out.print(i);
-                TerminalColor.yellow();
-                System.out.print(" | ");
-                TerminalColor.blue();
-                System.out.println(game);
-                TerminalColor.reset();
-                i++;
-            }
-        }
+
+
 
         return;
     }
+
 }
