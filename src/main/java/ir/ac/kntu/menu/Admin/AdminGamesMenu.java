@@ -3,6 +3,7 @@ package ir.ac.kntu.menu.Admin;
 import ir.ac.kntu.Scan;
 import ir.ac.kntu.Store;
 import ir.ac.kntu.TerminalColor;
+import ir.ac.kntu.menu.GameSearch;
 import ir.ac.kntu.menu.Menu;
 import ir.ac.kntu.models.Game;
 import ir.ac.kntu.models.User;
@@ -66,10 +67,17 @@ public class AdminGamesMenu extends Menu {
     }
 
     public void removeGame() {
-
-
-
-        return;
+        GameSearch gameSearch = new GameSearch(storeDB);
+        Game game = gameSearch.searchMenu();
+        if (storeDB.removeGame(game) && !game.equals(null)) {
+            TerminalColor.green();
+            System.out.println(game.getName() + " with " + game.getId() + " id successfully deleted !");
+            TerminalColor.reset();
+            return;
+        }
+        TerminalColor.red();
+        System.out.println("Fail delete game !");
+        TerminalColor.red();
     }
 
 }

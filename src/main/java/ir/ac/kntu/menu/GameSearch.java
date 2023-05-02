@@ -15,11 +15,13 @@ public class GameSearch {
     }
 
     public Game searchMenu() {
-        System.out.println("Search Name of game: ");
-        String name = Scan.getLine();
+        System.out.println("Search Name of game : ");
+        String name = Scan.getLine().trim();
         ArrayList<Game> result = storeDB.findGameByName(name);
         printGameSearchResult(result);
-
+        if (result.size() != 0){
+            return handleSelect(result);
+        }
         return null;
     }
     public Game handleSelect(ArrayList<Game> searchResult) {
@@ -31,14 +33,14 @@ public class GameSearch {
             TerminalColor.reset();
         }else {
             int choose = Integer.parseInt(input) - 1;
-            if (choose > searchResult.size() || choose < 0) {
+            if (choose >= searchResult.size() || choose < 0) {
                 TerminalColor.red();
                 System.out.println("Chose valid number!");
                 TerminalColor.reset();
             }
             else {
-                Game removeGame = searchResult.get(choose);
-                storeDB.removeGame(removeGame);
+                Game game = searchResult.get(choose);
+                return game;
             }
         }
         return null;
