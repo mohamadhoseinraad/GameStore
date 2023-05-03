@@ -4,8 +4,7 @@ import ir.ac.kntu.Scan;
 import ir.ac.kntu.Store;
 import ir.ac.kntu.TerminalColor;
 
-import java.util.ArrayList;
-import java.util.Objects;
+import java.util.*;
 
 public class User {
     private String username;
@@ -20,11 +19,11 @@ public class User {
 
     public final UserType userType;
 
-    private ArrayList<String> library;
+    private Map<Integer,String> library;
 
-    private ArrayList<String> friends;
+    private Set<String> friends;
 
-    private ArrayList<String> requests;
+    private Set<String> requests;
 
     public User(String username, String phoneNumber, String email, String password,UserType type) {
         this.username = username.toUpperCase().trim();
@@ -32,9 +31,9 @@ public class User {
         this.email = email.toLowerCase().trim();
         hashPassword = password.hashCode();
         wallet = 0;
-        library = new ArrayList<>();
-        friends = new ArrayList<>();
-        requests = new ArrayList<>();
+        library = new HashMap<>();
+        friends = new HashSet<>();
+        requests = new HashSet<>();
         userType = type;
     }
 
@@ -95,38 +94,36 @@ public class User {
         return true;
     }
 
-    public ArrayList<String> getLibrary() {
+    public Map<Integer,String> getLibrary() {
         return library;
     }
 
     public boolean addGame(Game game) {
-        if (library.indexOf(game.getName()) == -1) {
-            library.add(game.getName());
+        if (!library.containsKey(game.getId()) && wallet >= game.getPrice()) {
+            library.put(game.getId(),game.getName());
+            wallet -= game.getPrice();
             return true;
         }
         return false;
     }
 
     public boolean doHaveGame(Game game) {
-        if (library.indexOf(game.getName()) != -1) {
-            return true;
-        }
-        return false;
+        return library.containsKey(game.getId());
     }
 
-    public ArrayList<String> getFriends() {
+    public Set<String> getFriends() {
         return friends;
     }
 
     public boolean isFriend(User user) {
-        if (friends.indexOf(user.getUsername()) != -1) {
+        if (friends.contains(user.getUsername())) {
             return true;
         }
         return false;
     }
 
     public boolean addFriend(User user) {
-        if (friends.indexOf(user.getUsername()) != -1) {
+        if (friends.contains(user.getUsername())) {
             return false;
         }
         friends.add(user.getUsername());
@@ -135,23 +132,22 @@ public class User {
     }
 
     public boolean removeFriend(User user) {
-        if (friends.indexOf(user.getUsername()) != -1) {
+        if (friends.contains(user.getUsername())) {
             friends.remove(user.getUsername());
             return true;
         }
         return false;
     }
 
-    public ArrayList<String> getRequests() {
+    public Set<String> getRequests() {
         return requests;
     }
 
-    public boolean addRequest(User user) {
-        if (requests.indexOf(user.getUsername()) != -1 || !isFriend(user)) {
-            requests.add(user.getUsername());
-            return true;
+    public boolean addRequest(User someUser) {
+        if (friends.contains(someUser.getUsername())){
+            return false;
         }
-        return false;
+        return requests.add(someUser.getUsername());
     }
 
     @Override

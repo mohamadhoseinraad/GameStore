@@ -57,17 +57,16 @@ public class UserMenu extends Menu {
     }
 
     public void profile() {
-        ProfileMenu profileMenu = new ProfileMenu(storeDB,user);
+        ProfileMenu profileMenu = new ProfileMenu(storeDB, user);
         profileMenu.showMenu();
     }
 
     public void store() {
         GameSearch gameSearch = new GameSearch(storeDB);
         Game gameSelected;
-        while ((gameSelected = gameSearch.searchMenu("")) == null){
-
+        while ((gameSelected = gameSearch.searchMenu("")) == null) {
         }
-        GameMenu gameMenu = new GameMenu(user , gameSelected);
+        GameMenu gameMenu = new GameMenu(user, gameSelected);
         gameMenu.showMenu();
     }
 

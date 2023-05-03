@@ -1,6 +1,5 @@
 package ir.ac.kntu.menu;
 
-import ir.ac.kntu.GameMenuOptions;
 import ir.ac.kntu.TerminalColor;
 import ir.ac.kntu.models.Game;
 import ir.ac.kntu.models.User;
@@ -21,6 +20,7 @@ public class GameMenu extends Menu{
         while ((option = printMenuOptions(currentGame.getName(),GameMenuOptions.class) )!= GameMenuOptions.EXIT){
             switch (option){
                 case BUY :{
+                    buy();
                     break;
                 }
                 case GIFT :{
@@ -40,17 +40,30 @@ public class GameMenu extends Menu{
         System.exit(0);
     }
 
-    @Override
-    public <T extends Enum<T>> T printMenuOptions(String title, Class<T> menuEnum) {
-        TerminalColor.cyan();
-        System.out.println("----------" + title + "----------");
-        TerminalColor.reset();
-        currentGame.showGame();
-        T[] options = menuEnum.getEnumConstants();
-        for (int i = 0; i < options.length; i++) {
-            System.out.println((i + 1) + " - " + options[i]);
+    public void buy() {
+        if (currentUser.doHaveGame(currentGame)){
+            TerminalColor.red();
+            System.out.println("You already have this game!");
+            TerminalColor.reset();
+            return;
         }
-        System.out.print("Enter your choice : ");
-        return getOption(menuEnum);
+        if (currentUser.addGame(currentGame)){
+            TerminalColor.green();
+            System.out.println("Buy Successfully :) ");
+            TerminalColor.reset();
+            return;
+        }
+        TerminalColor.red();
+        System.out.println("You don't have enough money ! :(");
+        TerminalColor.reset();
+    }
+
+    public void rate() {
+    }
+
+    public void gift() {
+    }
+
+    public void comment() {
     }
 }
