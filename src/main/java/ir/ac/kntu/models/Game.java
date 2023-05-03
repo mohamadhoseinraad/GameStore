@@ -26,7 +26,7 @@ public class Game implements Cloneable {
     private ArrayList<Community> communities;
 
     public Game(String name, String details, String genre, double price) {
-        this.name = name;
+        this.name = name.toUpperCase();
         this.details = details;
         this.genre = genre;
         this.price = price;
@@ -40,7 +40,7 @@ public class Game implements Cloneable {
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = name.toUpperCase();
     }
 
     public String getDetails() {

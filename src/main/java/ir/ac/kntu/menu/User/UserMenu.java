@@ -3,7 +3,10 @@ package ir.ac.kntu.menu.User;
 import ir.ac.kntu.Scan;
 import ir.ac.kntu.Store;
 import ir.ac.kntu.TerminalColor;
+import ir.ac.kntu.menu.GameMenu;
+import ir.ac.kntu.menu.GameSearch;
 import ir.ac.kntu.menu.Menu;
+import ir.ac.kntu.models.Game;
 import ir.ac.kntu.models.User;
 
 public class UserMenu extends Menu {
@@ -59,6 +62,13 @@ public class UserMenu extends Menu {
     }
 
     public void store() {
+        GameSearch gameSearch = new GameSearch(storeDB);
+        Game gameSelected;
+        while ((gameSelected = gameSearch.searchMenu("")) == null){
+
+        }
+        GameMenu gameMenu = new GameMenu(user , gameSelected);
+        gameMenu.showMenu();
     }
 
     public void library() {
