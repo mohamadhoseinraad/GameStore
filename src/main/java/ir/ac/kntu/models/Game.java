@@ -106,8 +106,13 @@ public class Game implements Cloneable {
         System.out.print("| Name     : " + name);
         TerminalColor.reset();
         System.out.print("  -----  ");
-        TerminalColor.cyan();
-        System.out.println(price + "$ coast");
+        if (price == 0){
+            TerminalColor.green();
+            System.out.println("Free");
+        } else {
+            TerminalColor.cyan();
+            System.out.println(price + "$ coast");
+        }
         TerminalColor.yellow();
         System.out.print("| Genre : " + genre);
         System.out.print(" | Score : ");

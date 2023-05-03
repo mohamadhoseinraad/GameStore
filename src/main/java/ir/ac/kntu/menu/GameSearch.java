@@ -16,7 +16,7 @@ public class GameSearch {
 
     public Game searchMenu() {
         System.out.println("Search Name of game : ");
-        String name = Scan.getLine().trim();
+        String name = Scan.getLine().trim().toUpperCase();
         ArrayList<Game> result = storeDB.findGameByName(name);
         printGameSearchResult(result);
         if (result.size() != 0){
@@ -26,7 +26,7 @@ public class GameSearch {
     }
 
     public Game handleSelect(ArrayList<Game> searchResult) {
-        System.out.println("---- chose number to delete : ");
+        System.out.println("---- chose number : ");
         String input = Scan.getLine();
         if (!input.matches("[0-9]+")) {
             TerminalColor.red();
