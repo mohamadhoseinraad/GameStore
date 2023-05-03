@@ -63,7 +63,13 @@ public class AdminGamesMenu extends Menu {
     }
 
     public void editGame() {
-        return;
+        GameSearch gameSearch = new GameSearch(storeDB);
+        Game game = gameSearch.searchMenu();
+        if (game == null){
+            return;
+        }
+        AdminGameEdit adminGameEdit = new AdminGameEdit(game);
+        adminGameEdit.showMenu();
     }
 
     public void removeGame() {
