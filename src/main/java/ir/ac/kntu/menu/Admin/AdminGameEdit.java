@@ -46,6 +46,7 @@ public class AdminGameEdit extends Menu {
         }
         System.exit(0);
     }
+
     public void editPrice(){
         System.out.println("Enter new price : ");
         String input = Scan.getLine();

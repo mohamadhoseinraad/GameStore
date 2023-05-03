@@ -24,6 +24,7 @@ public class GameSearch {
         }
         return null;
     }
+
     public Game handleSelect(ArrayList<Game> searchResult) {
         System.out.println("---- chose number to delete : ");
         String input = Scan.getLine();
@@ -37,8 +38,7 @@ public class GameSearch {
                 TerminalColor.red();
                 System.out.println("Chose valid number!");
                 TerminalColor.reset();
-            }
-            else {
+            } else {
                 Game game = searchResult.get(choose);
                 return game;
             }
