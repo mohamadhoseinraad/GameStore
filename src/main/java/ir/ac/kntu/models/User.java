@@ -107,20 +107,31 @@ public class User {
         return false;
     }
 
+    public void addCostumeGame(Game game){
+        library.put(game.getId(), game.getName());
+    }
+
+    public boolean giftGame(Game game , User friend) {
+        if (!friend.getLibrary().containsKey(game.getId()) && wallet >= game.getPrice()) {
+            friend.addCostumeGame(game);
+            wallet -= game.getPrice();
+            return true;
+        }
+        return false;
+    }
+
     public boolean doHaveGame(Game game) {
         return library.containsKey(game.getId());
+    }
+
+    public boolean isFriend(String username) {
+        return library.containsKey(username);
     }
 
     public Set<String> getFriends() {
         return friends;
     }
 
-    public boolean isFriend(User user) {
-        if (friends.contains(user.getUsername())) {
-            return true;
-        }
-        return false;
-    }
 
     public boolean addFriend(User user) {
         if (friends.contains(user.getUsername())) {

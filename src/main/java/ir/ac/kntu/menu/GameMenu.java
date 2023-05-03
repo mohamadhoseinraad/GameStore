@@ -1,38 +1,43 @@
 package ir.ac.kntu.menu;
 
+import ir.ac.kntu.Scan;
+import ir.ac.kntu.Store;
 import ir.ac.kntu.TerminalColor;
 import ir.ac.kntu.models.Game;
 import ir.ac.kntu.models.User;
 
-public class GameMenu extends Menu{
+public class GameMenu extends Menu {
 
     private User currentUser;
     private Game currentGame;
 
-    public GameMenu(User currentUser, Game currentGame) {
+    private Store storeDB;
+
+    public GameMenu(User currentUser, Game currentGame, Store storeDB) {
         this.currentUser = currentUser;
         this.currentGame = currentGame;
+        this.storeDB = storeDB;
     }
 
     @Override
     public void showMenu() {
         GameMenuOptions option;
-        while ((option = printMenuOptions(currentGame.getName(),GameMenuOptions.class) )!= GameMenuOptions.EXIT){
-            switch (option){
-                case BUY :{
+        while (printGame() && (option = printMenuOptions(currentGame.getName(), GameMenuOptions.class)) != GameMenuOptions.EXIT) {
+            switch (option) {
+                case BUY: {
                     buy();
                     break;
                 }
-                case GIFT :{
+                case GIFT: {
                     break;
                 }
-                case RATE :{
+                case RATE: {
                     break;
                 }
-                case COMMENT :{
+                case COMMENT: {
                     break;
                 }
-                case BACK:{
+                case BACK: {
                     return;
                 }
             }
@@ -40,14 +45,19 @@ public class GameMenu extends Menu{
         System.exit(0);
     }
 
+    public boolean printGame() {
+        currentGame.showGame();
+        return true;
+    }
+
     public void buy() {
-        if (currentUser.doHaveGame(currentGame)){
+        if (currentUser.doHaveGame(currentGame)) {
             TerminalColor.red();
             System.out.println("You already have this game!");
             TerminalColor.reset();
             return;
         }
-        if (currentUser.addGame(currentGame)){
+        if (currentUser.addGame(currentGame)) {
             TerminalColor.green();
             System.out.println("Buy Successfully :) ");
             TerminalColor.reset();
@@ -59,9 +69,41 @@ public class GameMenu extends Menu{
     }
 
     public void rate() {
+
     }
 
     public void gift() {
+        System.out.println("Enter username you want to gift game : ");
+        String friendUsername = Scan.getLine().trim().toUpperCase();
+        if (currentUser.isFriend(friendUsername)){
+            TerminalColor.red();
+            System.out.println("This account is not your friend!");
+            TerminalColor.reset();
+            return;
+        }
+        User friend = storeDB.findUserByUsername(friendUsername);
+        if (friend == null){
+            TerminalColor.red();
+            System.out.println("Not found");
+            TerminalColor.reset();
+            return;
+        }
+
+        if (friend.doHaveGame(currentGame)) {
+            TerminalColor.red();
+            System.out.println("Your friend already has this game!");
+            TerminalColor.reset();
+            return;
+        }
+        if (currentUser.giftGame(currentGame , friend)) {
+            TerminalColor.green();
+            System.out.println("Gift Successfully :) ");
+            TerminalColor.reset();
+            return;
+        }
+        TerminalColor.red();
+        System.out.println("You don't have enough money ! :(");
+        TerminalColor.reset();
     }
 
     public void comment() {

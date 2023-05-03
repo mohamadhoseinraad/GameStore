@@ -66,7 +66,7 @@ public class UserMenu extends Menu {
         Game gameSelected;
         while ((gameSelected = gameSearch.searchMenu("")) == null) {
         }
-        GameMenu gameMenu = new GameMenu(user, gameSelected);
+        GameMenu gameMenu = new GameMenu(user, gameSelected , storeDB);
         gameMenu.showMenu();
     }
 
