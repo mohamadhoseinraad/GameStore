@@ -29,6 +29,7 @@ public class GameMenu extends Menu {
                     break;
                 }
                 case GIFT: {
+                    gift();
                     break;
                 }
                 case RATE: {
@@ -75,7 +76,7 @@ public class GameMenu extends Menu {
     public void gift() {
         System.out.println("Enter username you want to gift game : ");
         String friendUsername = Scan.getLine().trim().toUpperCase();
-        if (currentUser.isFriend(friendUsername)){
+        if (!currentUser.isFriend(friendUsername)){
             TerminalColor.red();
             System.out.println("This account is not your friend!");
             TerminalColor.reset();
