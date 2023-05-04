@@ -3,7 +3,6 @@ package ir.ac.kntu.menu.User;
 import ir.ac.kntu.Scan;
 import ir.ac.kntu.Store;
 import ir.ac.kntu.TerminalColor;
-import ir.ac.kntu.menu.GameStoreMenu;
 import ir.ac.kntu.menu.Menu;
 import ir.ac.kntu.models.Game;
 import ir.ac.kntu.models.User;
@@ -51,19 +50,17 @@ public class UserLibrary extends Menu {
     }
 
     public void allGame() {
-
-            Game selectedGame = handleSelect(userLibrary);
-            if (selectedGame == null) {
-                return;
-            }
-            GameStoreMenu gameStoreMenu = new GameStoreMenu(currentUser, selectedGame, storeDB);
-            gameStoreMenu.showMenu();
-
+        Game selectedGame = handleSelect(userLibrary);
+        if (selectedGame == null) {
+            return;
+        }
+        GameStoreMenu gameStoreMenu = new GameStoreMenu(currentUser, selectedGame, storeDB);
+        gameStoreMenu.showMenu();
     }
 
     private ArrayList<Game> getAllGames() {
         ArrayList<Game> result = new ArrayList<>();
-        for (Map.Entry<Integer,String> gameName : currentUser.getLibrary().entrySet()) {
+        for (Map.Entry<Integer, String> gameName : currentUser.getLibrary().entrySet()) {
             Game game = storeDB.findGame(gameName.getKey(), gameName.getValue());
             result.add(game);
         }
@@ -74,8 +71,8 @@ public class UserLibrary extends Menu {
         System.out.println("Search Name of game : ");
         String name = Scan.getLine().trim().toUpperCase();
         ArrayList<Game> result = new ArrayList<>();
-        for (Game game : userLibrary){
-            if (game.getName().startsWith(name)){
+        for (Game game : userLibrary) {
+            if (game.getName().startsWith(name)) {
                 result.add(game);
             }
         }
@@ -91,7 +88,7 @@ public class UserLibrary extends Menu {
     public Game handleSelect(ArrayList<Game> searchResult) {
         while (true) {
             printGameSearchResult(searchResult);
-            if (searchResult.size() == 0){
+            if (searchResult.size() == 0) {
                 return null;
             }
             System.out.println("---- chose number : (0 to back )");

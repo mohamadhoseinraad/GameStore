@@ -1,8 +1,9 @@
-package ir.ac.kntu.menu;
+package ir.ac.kntu.menu.User;
 
 import ir.ac.kntu.Scan;
 import ir.ac.kntu.Store;
 import ir.ac.kntu.TerminalColor;
+import ir.ac.kntu.menu.Menu;
 import ir.ac.kntu.models.Game;
 import ir.ac.kntu.models.User;
 

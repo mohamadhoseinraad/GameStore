@@ -57,9 +57,9 @@ public class Store {
         return result;
     }
 
-    public Game findGame(int id , String name){
-        for (Game game : games){
-            if (game.getId() == id && game.getName().equals(name)){
+    public Game findGame(int id, String name) {
+        for (Game game : games) {
+            if (game.getId() == id && game.getName().equals(name)) {
                 return game;
             }
         }
