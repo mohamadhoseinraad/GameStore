@@ -3,6 +3,7 @@ package ir.ac.kntu.menu.User;
 import ir.ac.kntu.Scan;
 import ir.ac.kntu.Store;
 import ir.ac.kntu.TerminalColor;
+import ir.ac.kntu.menu.Auth.UserStore;
 import ir.ac.kntu.menu.GameMenu;
 import ir.ac.kntu.menu.GameSearch;
 import ir.ac.kntu.menu.Menu;
@@ -62,14 +63,16 @@ public class UserMenu extends Menu {
     }
 
     public void store() {
-        GameSearch gameSearch = new GameSearch(storeDB);
-        Game gameSelected;
-//        while ((gameSelected = gameSearch.searchMenu("")) == null) {
+//        GameSearch gameSearch = new GameSearch(storeDB);
+//        Game gameSelected;
+////        while ((gameSelected = gameSearch.searchMenu("")) == null) {
+////        }
+//        while ((gameSelected = gameSearch.serachGameByPrice()) == null){
 //        }
-        while ((gameSelected = gameSearch.serachGameByPrice()) == null){
-        }
-        GameMenu gameMenu = new GameMenu(user, gameSelected , storeDB);
-        gameMenu.showMenu();
+//        GameMenu gameMenu = new GameMenu(user, gameSelected , storeDB);
+//        gameMenu.showMenu();
+        UserStore userStore = new UserStore(storeDB,user);
+        userStore.showMenu();
     }
 
     public void library() {
