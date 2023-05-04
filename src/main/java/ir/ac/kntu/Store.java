@@ -67,7 +67,7 @@ public class Store {
         return result;
     }
 
-    public ArrayList<Game> findGameByPrice(double basePrice , double maxPrice) {
+    public ArrayList<Game> findGameByPrice(double basePrice, double maxPrice) {
         ArrayList<Game> result = new ArrayList<>();
         for (Game game : games) {
             if (game.getPrice() >= basePrice && game.getPrice() <= maxPrice) {

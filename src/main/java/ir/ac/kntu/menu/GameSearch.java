@@ -13,6 +13,7 @@ public class GameSearch {
     public GameSearch(Store storeDB) {
         this.storeDB = storeDB;
     }
+
     public Game searchMenu(String name){
         name = name.trim().toUpperCase();
         ArrayList<Game> result = storeDB.findGameByName(name);
@@ -22,6 +23,7 @@ public class GameSearch {
         }
         return null;
     }
+
 
     public Game searchMenu() {
         System.out.println("Search Name of game : ");

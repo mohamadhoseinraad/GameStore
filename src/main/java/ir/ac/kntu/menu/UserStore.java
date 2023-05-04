@@ -17,6 +17,7 @@ import java.util.ArrayList;
 public class UserStore extends Menu {
 
     private Store storeDB;
+
     private User currentUser;
 
     public UserStore(Store store, User user) {

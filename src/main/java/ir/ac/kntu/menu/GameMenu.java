@@ -9,6 +9,7 @@ import ir.ac.kntu.models.User;
 public class GameMenu extends Menu {
 
     private User currentUser;
+
     private Game currentGame;
 
     private Store storeDB;
@@ -40,6 +41,9 @@ public class GameMenu extends Menu {
                 }
                 case BACK: {
                     return;
+                }
+                default: {
+                    break;
                 }
             }
         }
@@ -76,14 +80,14 @@ public class GameMenu extends Menu {
     public void gift() {
         System.out.println("Enter username you want to gift game : ");
         String friendUsername = Scan.getLine().trim().toUpperCase();
-        if (!currentUser.isFriend(friendUsername)){
+        if (!currentUser.isFriend(friendUsername)) {
             TerminalColor.red();
             System.out.println("This account is not your friend!");
             TerminalColor.reset();
             return;
         }
         User friend = storeDB.findUserByUsername(friendUsername);
-        if (friend == null){
+        if (friend == null) {
             TerminalColor.red();
             System.out.println("Not found");
             TerminalColor.reset();
@@ -96,7 +100,7 @@ public class GameMenu extends Menu {
             TerminalColor.reset();
             return;
         }
-        if (currentUser.giftGame(currentGame , friend)) {
+        if (currentUser.giftGame(currentGame, friend)) {
             TerminalColor.green();
             System.out.println("Gift Successfully :) ");
             TerminalColor.reset();

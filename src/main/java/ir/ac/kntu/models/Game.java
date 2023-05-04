@@ -99,19 +99,20 @@ public class Game implements Cloneable {
         this.rates = rates;
     }
 
-    public void rating(User user , Double rate){
-        if (rate >= 0 && rate <= 10){
+    public void rating(User user, Double rate) {
+        if (rate >= 0 && rate <= 10) {
             rates.put(user.getUsername(), score);
             updateScore();
         }
     }
-    private void updateScore(){
+
+    private void updateScore() {
         double sumRate = 0;
         int numberOfVoter = rates.size();
-        for (Map.Entry<String, Double> userRateMap : rates.entrySet()){
+        for (Map.Entry<String, Double> userRateMap : rates.entrySet()) {
             sumRate += userRateMap.getValue();
         }
-        score = sumRate/ numberOfVoter;
+        score = sumRate / numberOfVoter;
     }
 
     @Override
@@ -133,7 +134,7 @@ public class Game implements Cloneable {
         System.out.print("| Name     : " + name);
         TerminalColor.reset();
         System.out.print("  -----  ");
-        if (price == 0){
+        if (price == 0) {
             TerminalColor.green();
             System.out.println("Free");
         } else {
@@ -146,7 +147,7 @@ public class Game implements Cloneable {
         scoreColor();
         System.out.print(score);
         TerminalColor.cyan();
-        System.out.println(" ("+rates.size()+")");
+        System.out.println(" (" + rates.size() + ")");
         TerminalColor.blue();
         System.out.println("|----------------------------");
         TerminalColor.reset();

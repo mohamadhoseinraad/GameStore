@@ -19,13 +19,13 @@ public class User {
 
     public final UserType userType;
 
-    private Map<Integer,String> library;
+    private Map<Integer, String> library;
 
     private Set<String> friends;
 
     private Set<String> requests;
 
-    public User(String username, String phoneNumber, String email, String password,UserType type) {
+    public User(String username, String phoneNumber, String email, String password, UserType type) {
         this.username = username.toUpperCase().trim();
         this.phoneNumber = phoneNumber.trim();
         this.email = email.toLowerCase().trim();
@@ -94,24 +94,24 @@ public class User {
         return true;
     }
 
-    public Map<Integer,String> getLibrary() {
+    public Map<Integer, String> getLibrary() {
         return library;
     }
 
     public boolean addGame(Game game) {
         if (!library.containsKey(game.getId()) && wallet >= game.getPrice()) {
-            library.put(game.getId(),game.getName());
+            library.put(game.getId(), game.getName());
             wallet -= game.getPrice();
             return true;
         }
         return false;
     }
 
-    public void addCostumeGame(Game game){
+    public void addCostumeGame(Game game) {
         library.put(game.getId(), game.getName());
     }
 
-    public boolean giftGame(Game game , User friend) {
+    public boolean giftGame(Game game, User friend) {
         if (!friend.getLibrary().containsKey(game.getId()) && wallet >= game.getPrice()) {
             friend.addCostumeGame(game);
             wallet -= game.getPrice();
@@ -155,7 +155,7 @@ public class User {
     }
 
     public boolean addRequest(User someUser) {
-        if (friends.contains(someUser.getUsername())){
+        if (friends.contains(someUser.getUsername())) {
             return false;
         }
         return requests.add(someUser.getUsername());
@@ -184,18 +184,18 @@ public class User {
         return "Username :" + username + " | Email : " + email + lastGameName();
     }
 
-    public void showProfile(){
+    public void showProfile() {
         TerminalColor.blue();
         System.out.println("|----------------------------");
         TerminalColor.cyan();
-        System.out.print("| Username     : "+username);
+        System.out.print("| Username     : " + username);
         TerminalColor.reset();
         System.out.print("  -----  ");
         TerminalColor.cyan();
         System.out.println(wallet + "$");
         TerminalColor.yellow();
-        System.out.println("| Phone number : "+phoneNumber);
-        System.out.println("| Email        : "+email);
+        System.out.println("| Phone number : " + phoneNumber);
+        System.out.println("| Email        : " + email);
         TerminalColor.blue();
         System.out.println("|----------------------------");
         TerminalColor.reset();
@@ -204,7 +204,7 @@ public class User {
     private String lastGameName() {
 
         String result = " | 5 last Game  \n";
-        if (library.size() != 0){
+        if (library.size() != 0) {
             int i = 5;
             if (library.size() < 5) {
                 i = library.size();
