@@ -63,6 +63,8 @@ public class UserMenu extends Menu {
     }
 
     public void library() {
+        UserLibrary userLibrary = new UserLibrary(storeDB, user);
+        userLibrary.showMenu();
     }
 
     public void friends() {

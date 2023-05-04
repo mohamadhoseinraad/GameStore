@@ -36,7 +36,7 @@ public class GameSearch {
         return null;
     }
 
-    public Game serachGameByPrice() {
+    public Game searchByPrice() {
         System.out.println("from : ");
         String basePriceStr = Scan.getLine().trim();
         System.out.println("to : ");
