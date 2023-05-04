@@ -5,6 +5,7 @@ import ir.ac.kntu.Scan;
 import ir.ac.kntu.TerminalColor;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
@@ -23,6 +24,8 @@ public class Game implements Cloneable {
 
     private double score;
 
+    private Map<String, Double> rates;
+
     private ArrayList<Community> communities;
 
     public Game(String name, String details, String genre, double price) {
@@ -33,6 +36,7 @@ public class Game implements Cloneable {
         score = 0;
         id = gamesNumber++;
         communities = new ArrayList<>();
+        rates = new HashMap<>();
     }
 
     public String getName() {
@@ -85,6 +89,27 @@ public class Game implements Cloneable {
 
     public int getId() {
         return id;
+    }
+
+    public Map<String, Double> getRates() {
+        return rates;
+    }
+
+    public void setRates(Map<String, Double> rates) {
+        this.rates = rates;
+    }
+
+    public void rating(User user , Double rate){
+        rates.put(user.getUsername(), score);
+        updateScore();
+    }
+    private void updateScore(){
+        double sumRate = 0;
+        int numberOfVoter = rates.size();
+        for (Map.Entry<String, Double> userRateMap : rates.entrySet()){
+            sumRate += userRateMap.getValue();
+        }
+        score = sumRate/ numberOfVoter;
     }
 
     @Override
