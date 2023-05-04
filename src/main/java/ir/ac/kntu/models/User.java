@@ -184,7 +184,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "Username :" + username + " | Email : " + email + lastGameName();
+        return "Username :" + username + " | Phone number : " + phoneNumber + " | Email : " + email + lastGameName();
     }
 
     public void showProfile() {
@@ -206,14 +206,14 @@ public class User {
 
     private String lastGameName() {
 
-        String result = " | 5 last Game  \n";
+        String result = " | 5 last Game  ";
         if (library.size() != 0) {
             int i = 5;
             if (library.size() < 5) {
                 i = library.size();
             }
             for (; i > 0; i--) {
-                result += i + " - " + library.get(library.size() - 1 - i) + " \\ ";
+                result += i + " - " + library.get(library.size() - i) + "   ";
             }
             return result;
         }

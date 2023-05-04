@@ -96,7 +96,20 @@ public class Store {
         return result;
     }
 
+    public ArrayList<User> findUserByUsernames(String username) {
+        ArrayList<User> result = new ArrayList<>();
+        for (User u : users) {
+            if (u.getUsername().startsWith(username)) {
+                result.add(u);
+            }
+        }
+        return result;
+    }
+
     public boolean addGame(Game newGame) {
+        if (newGame == null){
+            return false;
+        }
         return games.add(newGame);
     }
 
@@ -110,6 +123,9 @@ public class Store {
     }
 
     public boolean addUser(User newUser) {
+        if (newUser == null){
+            return false;
+        }
         return users.add(newUser);
     }
 

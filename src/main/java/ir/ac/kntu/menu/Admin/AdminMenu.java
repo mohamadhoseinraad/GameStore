@@ -4,6 +4,7 @@ import ir.ac.kntu.Scan;
 import ir.ac.kntu.Store;
 import ir.ac.kntu.TerminalColor;
 import ir.ac.kntu.menu.Menu;
+import ir.ac.kntu.menu.UserSearch;
 import ir.ac.kntu.models.User;
 
 public class AdminMenu extends Menu {
@@ -43,6 +44,8 @@ public class AdminMenu extends Menu {
     }
 
     public void users() {
+        UserSearch userSearch = new UserSearch(storeDB);
+        userSearch.showMenu();
 
     }
 
