@@ -1,16 +1,12 @@
-package ir.ac.kntu.menu.Auth;
+package ir.ac.kntu.menu.User;
 
 import ir.ac.kntu.Scan;
 import ir.ac.kntu.Store;
 import ir.ac.kntu.TerminalColor;
-import ir.ac.kntu.menu.Admin.AdminMenu;
-import ir.ac.kntu.menu.GameMenu;
+import ir.ac.kntu.menu.GameStoreMenu;
 import ir.ac.kntu.menu.Menu;
-import ir.ac.kntu.menu.User.UserMenu;
-import ir.ac.kntu.menu.UserStoreOptions;
 import ir.ac.kntu.models.Game;
 import ir.ac.kntu.models.User;
-import ir.ac.kntu.models.UserType;
 
 import java.util.ArrayList;
 
@@ -61,8 +57,8 @@ public class UserStore extends Menu {
             if (selectedGame == null) {
                 return;
             }
-            GameMenu gameMenu = new GameMenu(currentUser, selectedGame, storeDB);
-            gameMenu.showMenu();
+            GameStoreMenu gameStoreMenu = new GameStoreMenu(currentUser, selectedGame, storeDB);
+            gameStoreMenu.showMenu();
         }
     }
 
@@ -82,8 +78,8 @@ public class UserStore extends Menu {
         if (selectedGame == null) {
             return;
         }
-        GameMenu gameMenu = new GameMenu(currentUser, selectedGame, storeDB);
-        gameMenu.showMenu();
+        GameStoreMenu gameStoreMenu = new GameStoreMenu(currentUser, selectedGame, storeDB);
+        gameStoreMenu.showMenu();
 
     }
 
@@ -105,8 +101,8 @@ public class UserStore extends Menu {
         if (selectedGame == null) {
             return;
         }
-        GameMenu gameMenu = new GameMenu(currentUser, selectedGame, storeDB);
-        gameMenu.showMenu();
+        GameStoreMenu gameStoreMenu = new GameStoreMenu(currentUser, selectedGame, storeDB);
+        gameStoreMenu.showMenu();
     }
 
     public Game handleSelect(ArrayList<Game> searchResult) {

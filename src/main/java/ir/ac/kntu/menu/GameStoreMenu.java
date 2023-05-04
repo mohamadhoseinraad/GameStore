@@ -6,7 +6,7 @@ import ir.ac.kntu.TerminalColor;
 import ir.ac.kntu.models.Game;
 import ir.ac.kntu.models.User;
 
-public class GameMenu extends Menu {
+public class GameStoreMenu extends Menu {
 
     private User currentUser;
 
@@ -14,7 +14,7 @@ public class GameMenu extends Menu {
 
     private Store storeDB;
 
-    public GameMenu(User currentUser, Game currentGame, Store storeDB) {
+    public GameStoreMenu(User currentUser, Game currentGame, Store storeDB) {
         this.currentUser = currentUser;
         this.currentGame = currentGame;
         this.storeDB = storeDB;
@@ -22,8 +22,8 @@ public class GameMenu extends Menu {
 
     @Override
     public void showMenu() {
-        GameMenuOptions option;
-        while (printGame() && (option = printMenuOptions(currentGame.getName(), GameMenuOptions.class)) != GameMenuOptions.EXIT) {
+        GameStoreMenuOptions option;
+        while (printGame() && (option = printMenuOptions(currentGame.getName(), GameStoreMenuOptions.class)) != GameStoreMenuOptions.EXIT) {
             switch (option) {
                 case BUY: {
                     buy();
@@ -31,12 +31,6 @@ public class GameMenu extends Menu {
                 }
                 case GIFT: {
                     gift();
-                    break;
-                }
-                case RATE: {
-                    break;
-                }
-                case COMMENT: {
                     break;
                 }
                 case BACK: {

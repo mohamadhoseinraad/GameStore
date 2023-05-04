@@ -139,7 +139,7 @@ public class ProfileMenu extends Menu {
         }
         user.chargeWallet(Double.parseDouble(amount));
         TerminalColor.green();
-        System.out.println("Your wallet charged.Inventory : " + user.getWallet());
+        System.out.println("Your wallet charged inventory : " + user.getWallet());
         TerminalColor.reset();
     }
 
