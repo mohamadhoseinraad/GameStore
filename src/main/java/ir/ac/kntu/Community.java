@@ -30,4 +30,12 @@ public class Community {
     public String toString() {
         return "User: " + username + " - " + comment;
     }
+
+    public void showComment() {
+        TerminalColor.yellow();
+        System.out.println("        User " + username + " say :");
+        TerminalColor.reset();
+        System.out.println("                " + comment);
+        TerminalColor.reset();
+    }
 }

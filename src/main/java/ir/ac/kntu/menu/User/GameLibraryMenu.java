@@ -84,7 +84,7 @@ public class GameLibraryMenu extends Menu {
     }
 
     public void showComments() {
-        System.out.println(currentGame.getCommunities());
+        currentGame.showAllComment();
     }
 
 }

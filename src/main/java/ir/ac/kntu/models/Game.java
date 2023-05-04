@@ -91,6 +91,12 @@ public class Game implements Cloneable {
         communities.add(community);
     }
 
+    public void showAllComment(){
+        for (Community community : communities){
+            community.showComment();
+        }
+    }
+
     public int getId() {
         return id;
     }
