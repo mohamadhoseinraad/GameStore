@@ -3,13 +3,10 @@ package ir.ac.kntu;
 public class Community {
     private String username;
 
-    private double score;
-
     private String comment;
 
-    public Community(String username, double score, String comment) {
+    public Community(String username, String comment) {
         this.username = username;
-        this.score = score;
         this.comment = comment;
     }
 
@@ -19,14 +16,6 @@ public class Community {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public double getScore() {
-        return score;
-    }
-
-    public void setScore(double score) {
-        this.score = score;
     }
 
     public String getComment() {
@@ -39,6 +28,6 @@ public class Community {
 
     @Override
     public String toString() {
-        return "User: " + username + " - " + score + "\n" + comment;
+        return "User: " + username + " - " + comment;
     }
 }

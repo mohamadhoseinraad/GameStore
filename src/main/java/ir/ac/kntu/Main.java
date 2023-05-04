@@ -21,7 +21,9 @@ public class Main {
         store.addGame(g2);
         store.addGame(g3);
         user.chargeWallet(100);
-
+        Community community = new Community(user.getUsername() , "Awlliii");
+        g1.addCommunity(community);
+        user.addGame(g1);
         AuthMenu authMenu = new AuthMenu(store);
         authMenu.showMenu();
 

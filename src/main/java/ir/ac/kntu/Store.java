@@ -97,12 +97,7 @@ public class Store {
     }
 
     public boolean addGame(Game newGame) {
-        String name = new String(newGame.getName());
-        String detail = new String(newGame.getDetails());
-        String genre = new String(newGame.getGenre());
-        double price = newGame.getPrice();
-        Game game = new Game(name, detail, genre, price);
-        return games.add(game);
+        return games.add(newGame);
     }
 
     public boolean removeGame(Game game) {

@@ -1,5 +1,6 @@
 package ir.ac.kntu.menu.User;
 
+import ir.ac.kntu.Community;
 import ir.ac.kntu.Scan;
 import ir.ac.kntu.Store;
 import ir.ac.kntu.TerminalColor;
@@ -38,7 +39,7 @@ public class GameLibraryMenu extends Menu {
                     showComments();
                     return;
                 }
-                case BACK:{
+                case BACK: {
                     return;
                 }
                 default: {
@@ -57,24 +58,33 @@ public class GameLibraryMenu extends Menu {
     public void rate() {
         System.out.println("Enter your rate");
         String rateStr;
-        while (!(rateStr = Scan.getLine()).matches("[0-9]|10")){
+        while (!(rateStr = Scan.getLine()).matches("[0-9]|10")) {
             TerminalColor.red();
             System.out.println("Please enter valid rate between 0-10");
             TerminalColor.reset();
         }
         double vote = Double.parseDouble(rateStr);
-        currentGame.rating(currentUser,vote);
+        currentGame.rating(currentUser, vote);
 
     }
 
     public void comment() {
         System.out.println("Enter your comment");
-        String userComment = Scan.getLine().trim().toUpperCase();
+        String userComment;
+        while ((userComment = Scan.getLine().trim()).length() < 3) {
+            TerminalColor.red();
+            System.out.println("Your comment must 3 or more character ! enter your comment again :");
+            TerminalColor.reset();
+        }
+        Community community = new Community(currentUser.getUsername(), userComment);
+        currentGame.addCommunity(community);
+        TerminalColor.green();
+        System.out.println("Successfully submit !");
+        TerminalColor.reset();
     }
 
     public void showComments() {
-        System.out.println("Enter your comment");
-        String userComment = Scan.getLine().trim().toUpperCase();
+        System.out.println(currentGame.getCommunities());
     }
 
 }

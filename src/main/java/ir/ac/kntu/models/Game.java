@@ -87,6 +87,10 @@ public class Game implements Cloneable {
         this.communities = communities;
     }
 
+    public void addCommunity(Community community){
+        communities.add(community);
+    }
+
     public int getId() {
         return id;
     }
