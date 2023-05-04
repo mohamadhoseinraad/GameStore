@@ -101,7 +101,7 @@ public class Game implements Cloneable {
 
     public void rating(User user, Double rate) {
         if (rate >= 0 && rate <= 10) {
-            rates.put(user.getUsername(), score);
+            rates.put(user.getUsername(), rate);
             updateScore();
         }
     }

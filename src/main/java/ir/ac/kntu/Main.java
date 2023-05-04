@@ -21,8 +21,7 @@ public class Main {
         store.addGame(g2);
         store.addGame(g3);
         user.chargeWallet(100);
-        System.out.println(g1);
-        System.out.println(user.addGame(g1));
+
         AuthMenu authMenu = new AuthMenu(store);
         authMenu.showMenu();
 

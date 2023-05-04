@@ -62,6 +62,8 @@ public class GameLibraryMenu extends Menu {
             System.out.println("Please enter valid rate between 0-10");
             TerminalColor.reset();
         }
+        double vote = Double.parseDouble(rateStr);
+        currentGame.rating(currentUser,vote);
 
     }
 
