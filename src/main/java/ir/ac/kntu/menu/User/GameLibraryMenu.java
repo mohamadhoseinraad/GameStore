@@ -56,6 +56,13 @@ public class GameLibraryMenu extends Menu {
 
     public void rate() {
         System.out.println("Enter your rate");
+        String rateStr;
+        while (!(rateStr = Scan.getLine()).matches("[0-9]|10")){
+            TerminalColor.red();
+            System.out.println("Please enter valid rate between 0-10");
+            TerminalColor.reset();
+        }
+
     }
 
     public void comment() {

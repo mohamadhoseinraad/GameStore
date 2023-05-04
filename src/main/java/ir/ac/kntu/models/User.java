@@ -99,6 +99,9 @@ public class User {
     }
 
     public boolean addGame(Game game) {
+        if (game == null){
+            return false;
+        }
         if (!library.containsKey(game.getId()) && wallet >= game.getPrice()) {
             library.put(game.getId(), game.getName());
             wallet -= game.getPrice();
