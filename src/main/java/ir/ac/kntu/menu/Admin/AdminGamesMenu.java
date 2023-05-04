@@ -55,7 +55,7 @@ public class AdminGamesMenu extends Menu {
         if (newGame != null) {
             if (storeDB.addGame(newGame)) {
                 TerminalColor.green();
-                System.out.println(newGame.getName() + " added to dataBase");
+                System.out.println(newGame.getName() + " added to DB");
                 TerminalColor.reset();
             }
         }
