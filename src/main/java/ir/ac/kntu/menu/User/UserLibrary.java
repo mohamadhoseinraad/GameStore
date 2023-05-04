@@ -54,8 +54,8 @@ public class UserLibrary extends Menu {
         if (selectedGame == null) {
             return;
         }
-        GameStoreMenu gameStoreMenu = new GameStoreMenu(currentUser, selectedGame, storeDB);
-        gameStoreMenu.showMenu();
+        GameLibraryMenu gameLibraryMenu = new GameLibraryMenu(currentUser, selectedGame, storeDB);
+        gameLibraryMenu.showMenu();
     }
 
     private ArrayList<Game> getAllGames() {
@@ -80,8 +80,8 @@ public class UserLibrary extends Menu {
         if (selectedGame == null) {
             return;
         }
-        GameStoreMenu gameStoreMenu = new GameStoreMenu(currentUser, selectedGame, storeDB);
-        gameStoreMenu.showMenu();
+        GameLibraryMenu gameLibraryMenu = new GameLibraryMenu(currentUser, selectedGame, storeDB);
+        gameLibraryMenu.showMenu();
 
     }
 
