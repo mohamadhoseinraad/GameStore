@@ -100,8 +100,10 @@ public class Game implements Cloneable {
     }
 
     public void rating(User user , Double rate){
-        rates.put(user.getUsername(), score);
-        updateScore();
+        if (rate >= 0 && rate <= 10){
+            rates.put(user.getUsername(), score);
+            updateScore();
+        }
     }
     private void updateScore(){
         double sumRate = 0;
@@ -142,7 +144,9 @@ public class Game implements Cloneable {
         System.out.print("| Genre : " + genre);
         System.out.print(" | Score : ");
         scoreColor();
-        System.out.println(score);
+        System.out.print(score);
+        TerminalColor.cyan();
+        System.out.println(" ("+rates.size()+")");
         TerminalColor.blue();
         System.out.println("|----------------------------");
         TerminalColor.reset();
