@@ -11,9 +11,9 @@ public class Main {
         User user = new User("ABC", "09", "qw", "123", UserType.USER);
         User user2 = new User("ABCD", "09", "qw", "123",UserType.USER);
         User amin = new User("admin", "09", "qw", "123",UserType.ADMIN);
-        Game g1 = new Game("swdgf","3", "we",1);
-        Game g2 = new Game("swd","3", "we",1);
-        Game g3 = new Game("swdg","3", "we",1);
+        Game g1 = new Game("swdgf","3", "we",10);
+        Game g2 = new Game("swd","3", "we",5);
+        Game g3 = new Game("swdg","3", "we",22);
         store.addUser(user);
         store.addUser(user2);
         store.addUser(amin);
