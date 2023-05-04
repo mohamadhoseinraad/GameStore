@@ -63,14 +63,6 @@ public class UserMenu extends Menu {
     }
 
     public void store() {
-//        GameSearch gameSearch = new GameSearch(storeDB);
-//        Game gameSelected;
-////        while ((gameSelected = gameSearch.searchMenu("")) == null) {
-////        }
-//        while ((gameSelected = gameSearch.serachGameByPrice()) == null){
-//        }
-//        GameMenu gameMenu = new GameMenu(user, gameSelected , storeDB);
-//        gameMenu.showMenu();
         UserStore userStore = new UserStore(storeDB,user);
         userStore.showMenu();
     }
