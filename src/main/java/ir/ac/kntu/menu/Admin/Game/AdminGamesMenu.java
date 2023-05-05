@@ -36,6 +36,10 @@ public class AdminGamesMenu extends Menu {
                         removeGame();
                         break;
                     }
+                    case EXPORT_TO_HTML:{
+                        exportHtml();
+                        break;
+                    }
                     case BACK: {
                         return;
                     }
@@ -45,6 +49,11 @@ public class AdminGamesMenu extends Menu {
             }
         }
         System.exit(0);
+    }
+
+    private void exportHtml() {
+        ExportGames exportGames = new ExportGames(storeDB);
+        exportGames.showMenu();
     }
 
     public void addGame() {
