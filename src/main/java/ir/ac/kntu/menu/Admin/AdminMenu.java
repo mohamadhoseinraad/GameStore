@@ -44,8 +44,8 @@ public class AdminMenu extends Menu {
     }
 
     public void users() {
-        UserSearch userSearch = new UserSearch(storeDB);
-        userSearch.showMenu();
+        AdminUserSearch adminUserSearch = new AdminUserSearch(storeDB);
+        adminUserSearch.showMenu();
 
     }
 

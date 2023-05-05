@@ -7,26 +7,26 @@ import ir.ac.kntu.models.UserType;
 import java.util.*;
 
 public class Store {
-    private Set<User> users;
+    private ArrayList<User> users;
 
     private ArrayList<Game> games;
 
     public Store(Set<User> users, Set<Game> games) {
-        this.users = new HashSet<>(users);
+        this.users = new ArrayList<>(users);
         this.games = new ArrayList<>(games);
     }
 
     public Store() {
-        users = new HashSet<>();
+        users = new ArrayList<>();
         games = new ArrayList<>();
     }
 
-    public Set<User> getUsers() {
-        return new HashSet<>(users);
+    public ArrayList<User> getUsers() {
+        return new ArrayList<>(users);
     }
 
-    public void setUsers(Set<User> users) {
-        this.users = new HashSet<>(users);
+    public void setUsers(ArrayList<User> users) {
+        this.users = new ArrayList<>(users);
     }
 
     public ArrayList<Game> getGames() {
@@ -50,7 +50,7 @@ public class Store {
     public ArrayList<User> findUserByPhoneNumber(String phoneNumber) {
         ArrayList<User> result = new ArrayList<>();
         for (User u : users) {
-            if (u.getPhoneNumber().compareTo(phoneNumber) >= 0) {
+            if (u.getPhoneNumber().compareTo(phoneNumber) >= 0 && u.getUserType() != UserType.ADMIN) {
                 result.add(u);
             }
         }
@@ -89,7 +89,7 @@ public class Store {
     public ArrayList<User> findUserByEmail(String email) {
         ArrayList<User> result = new ArrayList<>();
         for (User u : users) {
-            if (u.getEmail().startsWith(email)) {
+            if (u.getEmail().startsWith(email) && u.getUserType() != UserType.ADMIN) {
                 result.add(u);
             }
         }
@@ -99,7 +99,7 @@ public class Store {
     public ArrayList<User> findUserByUsernames(String username) {
         ArrayList<User> result = new ArrayList<>();
         for (User u : users) {
-            if (u.getUsername().startsWith(username)) {
+            if (u.getUsername().startsWith(username) && u.getUserType() != UserType.ADMIN) {
                 result.add(u);
             }
         }
@@ -107,10 +107,10 @@ public class Store {
     }
 
     public boolean addGame(Game newGame) {
-        if (newGame == null){
+        if (newGame == null) {
             return false;
         }
-        if (findGame(newGame.getId() , newGame.getName()) == null){
+        if (findGame(newGame.getId(), newGame.getName()) == null) {
             games.add(newGame);
             return true;
         }
@@ -118,7 +118,7 @@ public class Store {
     }
 
     public boolean removeGame(Game game) {
-        if (games.contains(game)){
+        if (games.contains(game)) {
             games.remove(game);
             return true;
         }
@@ -126,10 +126,18 @@ public class Store {
     }
 
     public boolean addUser(User newUser) {
-        if (newUser == null){
+        if (newUser == null) {
             return false;
         }
         return users.add(newUser);
+    }
+
+    public boolean removeUser(User user) {
+        if (users.contains(user)) {
+            users.remove(user);
+            return true;
+        }
+        return false;
     }
 
     public boolean loginUser(String username, String password) {

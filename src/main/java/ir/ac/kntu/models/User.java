@@ -140,7 +140,7 @@ public class User {
 
     public ArrayList<User> getFriendsList(Store storeDB) {
         ArrayList<User> friendsList = new ArrayList<>();
-        Set<User> allUsers = storeDB.getUsers();
+        ArrayList<User> allUsers = storeDB.getUsers();
         for (User user : allUsers){
             if (friends.contains(user.getUsername())){
                 friendsList.add(user);
@@ -152,7 +152,7 @@ public class User {
 
     public ArrayList<User> getUserNotFriend(Store storeDB) {
         ArrayList<User> friendsList = new ArrayList<>();
-        Set<User> allUsers = storeDB.getUsers();
+        ArrayList<User> allUsers = storeDB.getUsers();
         for (User user : allUsers){
             if (!friends.contains(user.getUsername()) && user.getUserType() != UserType.ADMIN){
                 friendsList.add(user);
