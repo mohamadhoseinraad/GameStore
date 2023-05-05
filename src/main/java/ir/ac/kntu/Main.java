@@ -1,6 +1,7 @@
 package ir.ac.kntu;
 
 import ir.ac.kntu.menu.Auth.AuthMenu;
+import ir.ac.kntu.models.Community;
 import ir.ac.kntu.models.Game;
 import ir.ac.kntu.models.User;
 import ir.ac.kntu.models.UserType;

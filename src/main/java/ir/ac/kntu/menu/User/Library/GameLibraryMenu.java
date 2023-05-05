@@ -1,9 +1,9 @@
-package ir.ac.kntu.menu.User;
+package ir.ac.kntu.menu.User.Library;
 
-import ir.ac.kntu.Community;
-import ir.ac.kntu.Scan;
+import ir.ac.kntu.models.Community;
+import ir.ac.kntu.HelperClasses.Scan;
 import ir.ac.kntu.Store;
-import ir.ac.kntu.TerminalColor;
+import ir.ac.kntu.HelperClasses.TerminalColor;
 import ir.ac.kntu.menu.Menu;
 import ir.ac.kntu.models.Game;
 import ir.ac.kntu.models.User;

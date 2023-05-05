@@ -1,7 +1,7 @@
-package ir.ac.kntu.menu.Admin;
+package ir.ac.kntu.menu.Admin.Game;
 
-import ir.ac.kntu.Scan;
-import ir.ac.kntu.TerminalColor;
+import ir.ac.kntu.HelperClasses.Scan;
+import ir.ac.kntu.HelperClasses.TerminalColor;
 import ir.ac.kntu.menu.Menu;
 import ir.ac.kntu.models.Game;
 

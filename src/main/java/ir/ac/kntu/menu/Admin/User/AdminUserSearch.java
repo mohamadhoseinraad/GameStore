@@ -1,9 +1,8 @@
-package ir.ac.kntu.menu.Admin;
+package ir.ac.kntu.menu.Admin.User;
 
-import ir.ac.kntu.Scan;
+import ir.ac.kntu.HelperClasses.Scan;
 import ir.ac.kntu.Store;
-import ir.ac.kntu.TerminalColor;
-import ir.ac.kntu.menu.User.ProfileMenu;
+import ir.ac.kntu.HelperClasses.TerminalColor;
 import ir.ac.kntu.models.User;
 import ir.ac.kntu.models.UserType;
 

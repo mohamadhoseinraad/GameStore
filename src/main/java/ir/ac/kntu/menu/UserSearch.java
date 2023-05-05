@@ -1,11 +1,9 @@
 package ir.ac.kntu.menu;
 
-import ir.ac.kntu.Scan;
+import ir.ac.kntu.HelperClasses.Scan;
 import ir.ac.kntu.Store;
-import ir.ac.kntu.TerminalColor;
-import ir.ac.kntu.menu.User.GameStoreMenu;
-import ir.ac.kntu.menu.User.ProfileMenu;
-import ir.ac.kntu.models.Game;
+import ir.ac.kntu.HelperClasses.TerminalColor;
+import ir.ac.kntu.menu.User.Profile.ProfileMenu;
 import ir.ac.kntu.models.User;
 
 import java.util.ArrayList;

@@ -1,10 +1,9 @@
 package ir.ac.kntu.menu.Admin;
 
-import ir.ac.kntu.Scan;
 import ir.ac.kntu.Store;
-import ir.ac.kntu.TerminalColor;
+import ir.ac.kntu.menu.Admin.Game.AdminGamesMenu;
+import ir.ac.kntu.menu.Admin.User.AdminUserSearch;
 import ir.ac.kntu.menu.Menu;
-import ir.ac.kntu.menu.UserSearch;
 import ir.ac.kntu.models.User;
 
 public class AdminMenu extends Menu {

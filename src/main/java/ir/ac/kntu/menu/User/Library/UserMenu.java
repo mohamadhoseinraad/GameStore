@@ -1,8 +1,12 @@
-package ir.ac.kntu.menu.User;
+package ir.ac.kntu.menu.User.Library;
 
 import ir.ac.kntu.Store;
-import ir.ac.kntu.TerminalColor;
+import ir.ac.kntu.HelperClasses.TerminalColor;
 import ir.ac.kntu.menu.Menu;
+import ir.ac.kntu.menu.User.Friend.UserFriendMenu;
+import ir.ac.kntu.menu.User.Profile.ProfileMenu;
+import ir.ac.kntu.menu.User.Store.UserStore;
+import ir.ac.kntu.menu.User.UserMenuOption;
 import ir.ac.kntu.models.User;
 
 public class UserMenu extends Menu {
@@ -58,7 +62,7 @@ public class UserMenu extends Menu {
     }
 
     public void store() {
-        UserStore userStore = new UserStore(storeDB,user);
+        UserStore userStore = new UserStore(storeDB, user);
         userStore.showMenu();
     }
 
@@ -68,7 +72,7 @@ public class UserMenu extends Menu {
     }
 
     public void friends() {
-        UserFriendMenu userFriendMenu = new UserFriendMenu(storeDB , user);
+        UserFriendMenu userFriendMenu = new UserFriendMenu(storeDB, user);
         userFriendMenu.showMenu();
     }
 }

@@ -1,8 +1,8 @@
-package ir.ac.kntu.menu.User;
+package ir.ac.kntu.menu.User.Friend;
 
-import ir.ac.kntu.Scan;
+import ir.ac.kntu.HelperClasses.Scan;
 import ir.ac.kntu.Store;
-import ir.ac.kntu.TerminalColor;
+import ir.ac.kntu.HelperClasses.TerminalColor;
 import ir.ac.kntu.models.User;
 
 import java.util.ArrayList;
@@ -13,6 +13,7 @@ public class UserFriendMenu {
     private ArrayList<User> notFriend;
 
     private ArrayList<User> friends;
+
     private User currentUser;
 
     public UserFriendMenu(Store storeDB, User currentUser) {
@@ -21,7 +22,7 @@ public class UserFriendMenu {
         updateList();
     }
 
-    private void updateList(){
+    private void updateList() {
         notFriend = currentUser.getUserNotFriend(storeDB);
         friends = currentUser.getFriendsList(storeDB);
     }
@@ -80,7 +81,7 @@ public class UserFriendMenu {
             if (selectedUser == null) {
                 return null;
             }
-            FriendProfileMenu friendProfileMenu = new FriendProfileMenu(selectedUser , currentUser);
+            FriendProfileMenu friendProfileMenu = new FriendProfileMenu(selectedUser, currentUser);
             friendProfileMenu.showMenu();
         }
         return null;

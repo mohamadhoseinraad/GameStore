@@ -1,11 +1,10 @@
-package ir.ac.kntu.menu.User;
+package ir.ac.kntu.menu.User.Profile;
 
-import ir.ac.kntu.Scan;
+import ir.ac.kntu.HelperClasses.Scan;
 import ir.ac.kntu.Store;
-import ir.ac.kntu.TerminalColor;
+import ir.ac.kntu.HelperClasses.TerminalColor;
 import ir.ac.kntu.menu.Menu;
 import ir.ac.kntu.models.User;
-import jdk.jshell.Snippet;
 
 public class ProfileMenu extends Menu {
     private Store storeDB;

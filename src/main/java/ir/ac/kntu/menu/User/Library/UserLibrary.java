@@ -1,29 +1,34 @@
-package ir.ac.kntu.menu.User;
+package ir.ac.kntu.menu.User.Library;
 
-import ir.ac.kntu.Scan;
+import ir.ac.kntu.HelperClasses.Scan;
 import ir.ac.kntu.Store;
-import ir.ac.kntu.TerminalColor;
+import ir.ac.kntu.HelperClasses.TerminalColor;
 import ir.ac.kntu.menu.Menu;
+import ir.ac.kntu.menu.User.UseLibraryOptions;
 import ir.ac.kntu.models.Game;
 import ir.ac.kntu.models.User;
 
 import java.util.ArrayList;
+import java.util.Map;
 
-public class UserStore extends Menu {
+public class UserLibrary extends Menu {
 
     private Store storeDB;
 
     private User currentUser;
 
-    public UserStore(Store store, User user) {
+    private ArrayList<Game> userLibrary;
+
+    public UserLibrary(Store store, User user) {
         this.storeDB = store;
         this.currentUser = user;
+        userLibrary = getAllGames();
     }
 
     @Override
     public void showMenu() {
-        UserStoreOptions option;
-        while ((option = printMenuOptions("Store", UserStoreOptions.class)) != UserStoreOptions.EXIT) {
+        UseLibraryOptions option;
+        while ((option = printMenuOptions("Library", UseLibraryOptions.class)) != UseLibraryOptions.EXIT) {
             if (option != null) {
                 switch (option) {
                     case ALL: {
@@ -32,10 +37,6 @@ public class UserStore extends Menu {
                     }
                     case BY_NAME: {
                         searchByName();
-                        break;
-                    }
-                    case BY_PRICE: {
-                        searchBPrice();
                         break;
                     }
                     case BACK: {
@@ -50,20 +51,18 @@ public class UserStore extends Menu {
     }
 
     public void allGame() {
-        ArrayList<Game> result = getAllGames();
-        if (result.size() != 0) {
-            Game selectedGame = handleSelect(result);
-            if (selectedGame == null) {
-                return;
-            }
-            GameStoreMenu gameStoreMenu = new GameStoreMenu(currentUser, selectedGame, storeDB);
-            gameStoreMenu.showMenu();
+        Game selectedGame = handleSelect(userLibrary);
+        if (selectedGame == null) {
+            return;
         }
+        GameLibraryMenu gameLibraryMenu = new GameLibraryMenu(currentUser, selectedGame, storeDB);
+        gameLibraryMenu.showMenu();
     }
 
     private ArrayList<Game> getAllGames() {
         ArrayList<Game> result = new ArrayList<>();
-        for (Game game : storeDB.getGames()) {
+        for (Map.Entry<Integer, String> gameName : currentUser.getLibrary().entrySet()) {
+            Game game = storeDB.findGame(gameName.getKey(), gameName.getValue());
             result.add(game);
         }
         return result;
@@ -72,42 +71,25 @@ public class UserStore extends Menu {
     public void searchByName() {
         System.out.println("Search Name of game : ");
         String name = Scan.getLine().trim().toUpperCase();
-        ArrayList<Game> result = storeDB.findGameByName(name);
+        ArrayList<Game> result = new ArrayList<>();
+        for (Game game : userLibrary) {
+            if (game.getName().startsWith(name)) {
+                result.add(game);
+            }
+        }
         Game selectedGame = handleSelect(result);
         if (selectedGame == null) {
             return;
         }
-        GameStoreMenu gameStoreMenu = new GameStoreMenu(currentUser, selectedGame, storeDB);
-        gameStoreMenu.showMenu();
+        GameLibraryMenu gameLibraryMenu = new GameLibraryMenu(currentUser, selectedGame, storeDB);
+        gameLibraryMenu.showMenu();
 
-    }
-
-    public void searchBPrice(){
-        System.out.println("from : ");
-        String basePriceStr = Scan.getLine().trim();
-        System.out.println("to : ");
-        String maxPriceStr = Scan.getLine().trim();
-        if (!maxPriceStr.matches("[0-9][0-9.]*") || !basePriceStr.matches("[0-9][0-9.]*")){
-            TerminalColor.red();
-            System.out.println("Enter valid amount!");
-            TerminalColor.reset();
-            return;
-        }
-        double basePrice = Double.parseDouble(basePriceStr);
-        double maxPrice = Double.parseDouble(maxPriceStr);
-        ArrayList<Game> result = storeDB.findGameByPrice(basePrice, maxPrice);
-        Game selectedGame = handleSelect(result);
-        if (selectedGame == null) {
-            return;
-        }
-        GameStoreMenu gameStoreMenu = new GameStoreMenu(currentUser, selectedGame, storeDB);
-        gameStoreMenu.showMenu();
     }
 
     public Game handleSelect(ArrayList<Game> searchResult) {
         while (true) {
             printGameSearchResult(searchResult);
-            if (searchResult.size() == 0){
+            if (searchResult.size() == 0) {
                 return null;
             }
             System.out.println("---- chose number : (0 to back )");

@@ -1,8 +1,8 @@
 package ir.ac.kntu.models;
 
-import ir.ac.kntu.Scan;
+import ir.ac.kntu.HelperClasses.Scan;
 import ir.ac.kntu.Store;
-import ir.ac.kntu.TerminalColor;
+import ir.ac.kntu.HelperClasses.TerminalColor;
 
 import java.util.*;
 
@@ -209,6 +209,7 @@ public class User {
         User user = (User) o;
         return username.equals(user.getUsername());
     }
+
     @Override
     public int hashCode() {
         return Objects.hash(username);

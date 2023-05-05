@@ -1,11 +1,11 @@
 package ir.ac.kntu.menu.Auth;
 
-import ir.ac.kntu.Scan;
+import ir.ac.kntu.HelperClasses.Scan;
 import ir.ac.kntu.Store;
-import ir.ac.kntu.TerminalColor;
+import ir.ac.kntu.HelperClasses.TerminalColor;
 import ir.ac.kntu.menu.Admin.AdminMenu;
 import ir.ac.kntu.menu.Menu;
-import ir.ac.kntu.menu.User.UserMenu;
+import ir.ac.kntu.menu.User.Library.UserMenu;
 import ir.ac.kntu.models.User;
 import ir.ac.kntu.models.UserType;
 
