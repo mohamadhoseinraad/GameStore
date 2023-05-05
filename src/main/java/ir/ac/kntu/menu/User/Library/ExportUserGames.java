@@ -14,6 +14,7 @@ import java.util.Map;
 public class ExportUserGames extends Menu {
 
     private Store storeDB;
+
     private User currentUser;
 
     private ArrayList<Game> library;
@@ -114,6 +115,7 @@ public class ExportUserGames extends Menu {
         String title = currentUser.getUsername()+" Games filter by price from " + basePrice + "to" +maxPrice;
         GenerateHTML.generateHTML(title, convertArray(result));
     }
+
     private ArrayList<Game> priceFilter(double min, double max){
         ArrayList<Game> result = new ArrayList<>();
         for (Game game : library){
