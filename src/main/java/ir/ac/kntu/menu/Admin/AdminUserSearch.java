@@ -157,6 +157,10 @@ public class AdminUserSearch {
                     case BY_PHONE_NUMBER: {
                         return phoneSearch();
                     }
+                    case ADD_USER:{
+                        User.makeUser(storeDB);
+                        break;
+                    }
                     case BACK: {
                         break;
                     }

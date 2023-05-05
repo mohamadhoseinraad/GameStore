@@ -284,6 +284,8 @@ public class User {
             return null;
         }
         TerminalColor.reset();
-        return new User(username, phoneNumber, email, password, UserType.USER);
+        User newUser = new User(username, phoneNumber, email, password, UserType.USER);
+        storeDB.addUser(newUser);
+        return newUser;
     }
 }
