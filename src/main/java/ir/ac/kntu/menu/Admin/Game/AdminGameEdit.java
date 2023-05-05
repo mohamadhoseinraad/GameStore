@@ -46,12 +46,12 @@ public class AdminGameEdit extends Menu {
         System.exit(0);
     }
 
-    public boolean showGame() {
+    private boolean showGame() {
         currentGame.showGame();
         return true;
     }
 
-    public void editPrice() {
+    private void editPrice() {
         System.out.println("Enter new price : ");
         String input = Scan.getLine();
         if (input.matches("[0-9][0-9.]*")) {
@@ -64,7 +64,7 @@ public class AdminGameEdit extends Menu {
         TerminalColor.reset();
     }
 
-    public void editName() {
+    private void editName() {
         System.out.println("Enter new name : ");
         String input = Scan.getLine().trim().toUpperCase();
         if (input.length() > 2) {
@@ -76,7 +76,7 @@ public class AdminGameEdit extends Menu {
         TerminalColor.reset();
     }
 
-    public void editDetail() {
+    private void editDetail() {
         System.out.println("Enter new detail : ");
         String input = Scan.getLine().trim().toUpperCase();
         if (input.length() > 2) {
@@ -88,7 +88,7 @@ public class AdminGameEdit extends Menu {
         TerminalColor.reset();
     }
 
-    public void editGenre() {
+    private void editGenre() {
         System.out.println("Enter new genre : ");
         String input = Scan.getLine().trim().toUpperCase();
         if (input.length() > 2) {

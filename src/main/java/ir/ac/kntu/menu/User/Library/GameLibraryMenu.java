@@ -49,12 +49,12 @@ public class GameLibraryMenu extends Menu {
         System.exit(0);
     }
 
-    public boolean printGame() {
+    private boolean printGame() {
         currentGame.showGame();
         return true;
     }
 
-    public void rate() {
+    private void rate() {
         System.out.println("Enter your rate");
         String rateStr;
         while (!(rateStr = Scan.getLine()).matches("[0-9]|10")) {
@@ -67,7 +67,7 @@ public class GameLibraryMenu extends Menu {
 
     }
 
-    public void comment() {
+    private void comment() {
         System.out.println("Enter your comment");
         String userComment;
         while ((userComment = Scan.getLine().trim()).length() < 3) {
@@ -82,7 +82,7 @@ public class GameLibraryMenu extends Menu {
         TerminalColor.reset();
     }
 
-    public void showComments() {
+    private void showComments() {
         currentGame.showAllComment();
     }
 

@@ -15,7 +15,7 @@ public class AdminUserSearch {
         this.storeDB = storeDB;
     }
 
-    public User searchMenu(String name) {
+    private User searchMenu(String name) {
         name = name.trim().toUpperCase();
         ArrayList<User> result = storeDB.findUserByUsernames(name);
         printUserSearchResult(result);
@@ -26,7 +26,7 @@ public class AdminUserSearch {
     }
 
 
-    public User usernameSearch() {
+    private User usernameSearch() {
         System.out.println("Search User by username : ");
         String name = Scan.getLine().trim().toUpperCase();
         ArrayList<User> result = storeDB.findUserByUsernames(name);
@@ -42,7 +42,7 @@ public class AdminUserSearch {
         return null;
     }
 
-    public User emailSearch() {
+    private User emailSearch() {
         System.out.println("Search User by e-mail : ");
         String email = Scan.getLine().trim().toLowerCase();
         ArrayList<User> result = storeDB.findUserByEmail(email);
@@ -58,7 +58,7 @@ public class AdminUserSearch {
         return null;
     }
 
-    public User phoneSearch() {
+    private User phoneSearch() {
         System.out.println("Search User by phone number : ");
         String phoneNumber = Scan.getLine().trim().toLowerCase();
         ArrayList<User> result = storeDB.findUserByPhoneNumber(phoneNumber);
@@ -75,7 +75,7 @@ public class AdminUserSearch {
     }
 
 
-    public User handleSelect(ArrayList<User> searchResult) {
+    private User handleSelect(ArrayList<User> searchResult) {
         System.out.println("---- chose number : ");
         String input = Scan.getLine();
         if (!input.matches("[0-9]+")) {
@@ -97,7 +97,7 @@ public class AdminUserSearch {
 
     }
 
-    public User allUsers() {
+    private User allUsers() {
         ArrayList<User> result = getAllUsers();
         printUserSearchResult(result);
         if (result.size() != 0) {
@@ -173,7 +173,7 @@ public class AdminUserSearch {
         return null;
     }
 
-    public <T extends Enum<T>> T getOption(Class<T> menuEnum) {
+    private  <T extends Enum<T>> T getOption(Class<T> menuEnum) {
         T[] options = menuEnum.getEnumConstants();
         String choiceStr = Scan.getLine().trim();
         int choice = -1;
@@ -190,7 +190,7 @@ public class AdminUserSearch {
         return null;
     }
 
-    public <T extends Enum<T>> T printMenuOptions(String title, Class<T> menuEnum) {
+    private  <T extends Enum<T>> T printMenuOptions(String title, Class<T> menuEnum) {
         TerminalColor.cyan();
         System.out.println("----------" + title + "----------");
         TerminalColor.reset();

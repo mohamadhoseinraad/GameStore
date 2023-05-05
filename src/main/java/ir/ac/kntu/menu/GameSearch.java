@@ -36,28 +36,7 @@ public class GameSearch {
         return null;
     }
 
-    public Game searchByPrice() {
-        System.out.println("from : ");
-        String basePriceStr = Scan.getLine().trim();
-        System.out.println("to : ");
-        String maxPriceStr = Scan.getLine().trim();
-        if (!maxPriceStr.matches("[0-9][0-9.]*") || !basePriceStr.matches("[0-9][0-9.]*")){
-            TerminalColor.red();
-            System.out.println("Enter valid amount!");
-            TerminalColor.reset();
-            return null;
-        }
-        double basePrice = Double.parseDouble(basePriceStr);
-        double maxPrice = Double.parseDouble(maxPriceStr);
-        ArrayList<Game> result = storeDB.findGameByPrice(basePrice, maxPrice);
-        printGameSearchResult(result);
-        if (result.size() != 0){
-            return handleSelect(result);
-        }
-        return null;
-    }
-
-    public Game handleSelect(ArrayList<Game> searchResult) {
+    private Game handleSelect(ArrayList<Game> searchResult) {
         System.out.println("---- chose number : ");
         String input = Scan.getLine();
         if (!input.matches("[0-9]+")) {

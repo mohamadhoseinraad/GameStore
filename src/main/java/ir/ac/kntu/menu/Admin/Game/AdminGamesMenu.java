@@ -56,7 +56,7 @@ public class AdminGamesMenu extends Menu {
         exportGames.showMenu();
     }
 
-    public void addGame() {
+    private void addGame() {
         Game newGame = Game.makeGame();
         if (newGame != null) {
             if (storeDB.addGame(newGame)) {
@@ -68,7 +68,7 @@ public class AdminGamesMenu extends Menu {
         return;
     }
 
-    public void editGame() {
+    private void editGame() {
         GameSearch gameSearch = new GameSearch(storeDB);
         Game game = gameSearch.searchMenu();
         if (game == null){
@@ -78,7 +78,7 @@ public class AdminGamesMenu extends Menu {
         adminGameEdit.showMenu();
     }
 
-    public void removeGame() {
+    private void removeGame() {
         GameSearch gameSearch = new GameSearch(storeDB);
         Game game = gameSearch.searchMenu();
         System.out.println();

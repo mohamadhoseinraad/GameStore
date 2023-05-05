@@ -42,13 +42,13 @@ public class AdminMenu extends Menu {
         System.exit(0);
     }
 
-    public void users() {
+    private void users() {
         AdminUserSearch adminUserSearch = new AdminUserSearch(storeDB);
         adminUserSearch.showMenu();
 
     }
 
-    public void games() {
+    private void games() {
         AdminGamesMenu adminGamesMenu = new AdminGamesMenu(storeDB, admin);
         adminGamesMenu.showMenu();
     }

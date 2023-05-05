@@ -4,7 +4,6 @@ import ir.ac.kntu.HelperClasses.Scan;
 import ir.ac.kntu.Store;
 import ir.ac.kntu.HelperClasses.TerminalColor;
 import ir.ac.kntu.menu.Menu;
-import ir.ac.kntu.menu.User.UseLibraryOptions;
 import ir.ac.kntu.models.Game;
 import ir.ac.kntu.models.User;
 
@@ -39,6 +38,10 @@ public class UserLibrary extends Menu {
                         searchByName();
                         break;
                     }
+                    case EXPORT_LIBRARY_TO_HTML: {
+                        exportHtml();
+                        break;
+                    }
                     case BACK: {
                         return;
                     }
@@ -50,13 +53,18 @@ public class UserLibrary extends Menu {
         System.exit(0);
     }
 
-    public void allGame() {
+    private void allGame() {
         Game selectedGame = handleSelect(userLibrary);
         if (selectedGame == null) {
             return;
         }
         GameLibraryMenu gameLibraryMenu = new GameLibraryMenu(currentUser, selectedGame, storeDB);
         gameLibraryMenu.showMenu();
+    }
+
+    private void exportHtml() {
+        ExportUserGames exportUserGames = new ExportUserGames(storeDB,currentUser);
+        exportUserGames.showMenu();
     }
 
     private ArrayList<Game> getAllGames() {
@@ -68,7 +76,7 @@ public class UserLibrary extends Menu {
         return result;
     }
 
-    public void searchByName() {
+    private void searchByName() {
         System.out.println("Search Name of game : ");
         String name = Scan.getLine().trim().toUpperCase();
         ArrayList<Game> result = new ArrayList<>();
@@ -86,7 +94,7 @@ public class UserLibrary extends Menu {
 
     }
 
-    public Game handleSelect(ArrayList<Game> searchResult) {
+    private Game handleSelect(ArrayList<Game> searchResult) {
         while (true) {
             printGameSearchResult(searchResult);
             if (searchResult.size() == 0) {

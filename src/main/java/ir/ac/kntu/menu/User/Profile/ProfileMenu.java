@@ -52,12 +52,12 @@ public class ProfileMenu extends Menu {
         System.exit(0);
     }
 
-    public boolean userProfile() {
+    private boolean userProfile() {
         user.showProfile();
         return true;
     }
 
-    public void changeUsername() {
+    private void changeUsername() {
         System.out.println("Enter your new username:");
         String newUsername = Scan.getLine().toUpperCase().trim();
         TerminalColor.red();
@@ -83,7 +83,7 @@ public class ProfileMenu extends Menu {
         TerminalColor.reset();
     }
 
-    public void changeEmail() {
+    private void changeEmail() {
         System.out.println("Enter your new email:");
         String newEmail = Scan.getLine().toLowerCase().trim();
         TerminalColor.red();
@@ -103,7 +103,7 @@ public class ProfileMenu extends Menu {
         TerminalColor.reset();
     }
 
-    public void changePhoneNumber() {
+    private void changePhoneNumber() {
         System.out.println("Enter your new phone number:");
         String newPhoneNumber = Scan.getLine().toUpperCase().trim();
         TerminalColor.red();
@@ -121,7 +121,7 @@ public class ProfileMenu extends Menu {
         TerminalColor.reset();
     }
 
-    public void chargeWallet() {
+    private void chargeWallet() {
         System.out.println("how much you want amount ? (1+ $)");
         String amount = Scan.getLine();
         TerminalColor.red();
@@ -142,7 +142,7 @@ public class ProfileMenu extends Menu {
         TerminalColor.reset();
     }
 
-    public void changePassword() {
+    private void changePassword() {
         int error = 0;
         while (error < 3) {
             System.out.println("Enter old password:");

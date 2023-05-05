@@ -27,7 +27,7 @@ public class UserFriendMenu {
         friends = currentUser.getFriendsList(storeDB);
     }
 
-    public User searchMenu(String name) {
+    private User searchMenu(String name) {
         name = name.trim().toUpperCase();
         ArrayList<User> result = storeDB.findUserByUsernames(name);
         printUserSearchResult(result);
@@ -38,7 +38,7 @@ public class UserFriendMenu {
     }
 
 
-    public ArrayList<User> usernameSearch(ArrayList<User> notFriend) {
+    private ArrayList<User> usernameSearch(ArrayList<User> notFriend) {
         System.out.println("Search User by username : ");
         String name = Scan.getLine().trim().toUpperCase();
         ArrayList<User> result = new ArrayList<>();
@@ -51,7 +51,7 @@ public class UserFriendMenu {
     }
 
 
-    public User handleSelect(ArrayList<User> searchResult) {
+    private User handleSelect(ArrayList<User> searchResult) {
         System.out.println("---- chose number : ");
         String input = Scan.getLine();
         if (!input.matches("[0-9]+")) {
@@ -73,7 +73,7 @@ public class UserFriendMenu {
 
     }
 
-    public User allFriends() {
+    private User allFriends() {
         ArrayList<User> result = friends;
         printUserSearchResult(result);
         if (result.size() != 0) {
@@ -113,7 +113,7 @@ public class UserFriendMenu {
         TerminalColor.reset();
     }
 
-    public User addFriend() {
+    private User addFriend() {
         ArrayList<User> result = usernameSearch(notFriend);
         printUserSearchResult(result);
         if (result.size() != 0) {
@@ -228,7 +228,7 @@ public class UserFriendMenu {
         return result;
     }
 
-    public <T extends Enum<T>> T getOption(Class<T> menuEnum) {
+    private  <T extends Enum<T>> T getOption(Class<T> menuEnum) {
         T[] options = menuEnum.getEnumConstants();
         String choiceStr = Scan.getLine().trim();
         int choice = -1;
@@ -245,7 +245,7 @@ public class UserFriendMenu {
         return null;
     }
 
-    public <T extends Enum<T>> T printMenuOptions(String title, Class<T> menuEnum) {
+    private  <T extends Enum<T>> T printMenuOptions(String title, Class<T> menuEnum) {
         TerminalColor.cyan();
         System.out.println("----------" + title + "----------");
         TerminalColor.reset();

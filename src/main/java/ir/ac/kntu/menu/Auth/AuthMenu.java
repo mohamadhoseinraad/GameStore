@@ -5,7 +5,7 @@ import ir.ac.kntu.Store;
 import ir.ac.kntu.HelperClasses.TerminalColor;
 import ir.ac.kntu.menu.Admin.AdminMenu;
 import ir.ac.kntu.menu.Menu;
-import ir.ac.kntu.menu.User.Library.UserMenu;
+import ir.ac.kntu.menu.User.UserMenu;
 import ir.ac.kntu.models.User;
 import ir.ac.kntu.models.UserType;
 
@@ -28,7 +28,7 @@ public class AuthMenu extends Menu {
                         break;
                     }
                     case SING_UP: {
-                        singup();
+                        singUp();
                         break;
                     }
                     default:
@@ -38,7 +38,7 @@ public class AuthMenu extends Menu {
         }
     }
 
-    public void loginUser() {
+    private void loginUser() {
         TerminalColor.blue();
         System.out.println("---- Log in ----");
         TerminalColor.reset();
@@ -62,7 +62,7 @@ public class AuthMenu extends Menu {
         }
     }
 
-    public void singup() {
+    private void singUp() {
         TerminalColor.blue();
         System.out.println("---- Log in ----");
         TerminalColor.reset();
