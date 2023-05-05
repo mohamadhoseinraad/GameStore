@@ -25,6 +25,8 @@ public class Main {
         Community community = new Community(user.getUsername(), "Awlliii");
         g1.addCommunity(community);
         user.addGame(g1);
+        user.addFriend(user2);
+        user2.addFriend(user);
         System.out.println(user);
         AuthMenu authMenu = new AuthMenu(store);
         authMenu.showMenu();

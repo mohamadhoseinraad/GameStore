@@ -18,6 +18,10 @@ public class UserFriendMenu {
     public UserFriendMenu(Store storeDB, User currentUser) {
         this.storeDB = storeDB;
         this.currentUser = currentUser;
+        updateList();
+    }
+
+    private void updateList(){
         notFriend = currentUser.getUserNotFriend(storeDB);
         friends = currentUser.getFriendsList(storeDB);
     }
@@ -76,8 +80,8 @@ public class UserFriendMenu {
             if (selectedUser == null) {
                 return null;
             }
-            ProfileMenu profileMenu = new ProfileMenu(storeDB, selectedUser);
-            profileMenu.showMenu();
+            FriendProfileMenu friendProfileMenu = new FriendProfileMenu(selectedUser , currentUser);
+            friendProfileMenu.showMenu();
         }
         return null;
     }
@@ -163,6 +167,7 @@ public class UserFriendMenu {
                         System.out.println("Invalid choose");
                 }
             }
+            updateList();
 
         }
         System.exit(0);
