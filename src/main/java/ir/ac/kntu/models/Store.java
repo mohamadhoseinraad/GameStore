@@ -1,4 +1,4 @@
-package ir.ac.kntu;
+package ir.ac.kntu.models;
 
 import ir.ac.kntu.models.Game;
 import ir.ac.kntu.models.User;

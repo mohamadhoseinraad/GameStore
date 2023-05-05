@@ -1,6 +1,6 @@
 package ir.ac.kntu.menu.Admin.Game;
 
-import ir.ac.kntu.Store;
+import ir.ac.kntu.models.Store;
 import ir.ac.kntu.HelperClasses.TerminalColor;
 import ir.ac.kntu.menu.GameSearch;
 import ir.ac.kntu.menu.Menu;

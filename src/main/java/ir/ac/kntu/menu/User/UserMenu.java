@@ -1,13 +1,12 @@
 package ir.ac.kntu.menu.User;
 
-import ir.ac.kntu.Store;
+import ir.ac.kntu.models.Store;
 import ir.ac.kntu.HelperClasses.TerminalColor;
 import ir.ac.kntu.menu.Menu;
 import ir.ac.kntu.menu.User.Friend.UserFriendMenu;
 import ir.ac.kntu.menu.User.Library.UserLibrary;
 import ir.ac.kntu.menu.User.Profile.ProfileMenu;
 import ir.ac.kntu.menu.User.Store.UserStore;
-import ir.ac.kntu.menu.User.UserMenuOption;
 import ir.ac.kntu.models.User;
 
 public class UserMenu extends Menu {

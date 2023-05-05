@@ -1,7 +1,6 @@
 package ir.ac.kntu.models;
 
 import ir.ac.kntu.HelperClasses.Scan;
-import ir.ac.kntu.Store;
 import ir.ac.kntu.HelperClasses.TerminalColor;
 
 import java.util.*;

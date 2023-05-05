@@ -1,6 +1,6 @@
 package ir.ac.kntu.menu.Admin;
 
-import ir.ac.kntu.Store;
+import ir.ac.kntu.models.Store;
 import ir.ac.kntu.menu.Admin.Game.AdminGamesMenu;
 import ir.ac.kntu.menu.Admin.User.AdminUserSearch;
 import ir.ac.kntu.menu.Menu;
