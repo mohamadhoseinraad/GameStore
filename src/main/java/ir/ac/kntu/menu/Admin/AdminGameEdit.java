@@ -92,7 +92,7 @@ public class AdminGameEdit extends Menu {
         System.out.println("Enter new genre : ");
         String input = Scan.getLine().trim().toUpperCase();
         if (input.length() > 2) {
-            currentGame.setDetails(input);
+            currentGame.setGenre(input);
             return;
         }
         TerminalColor.red();

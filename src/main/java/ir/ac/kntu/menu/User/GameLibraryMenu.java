@@ -37,7 +37,6 @@ public class GameLibraryMenu extends Menu {
                 }
                 case SHOW_COMMENTS: {
                     showComments();
-                    return;
                 }
                 case BACK: {
                     return;

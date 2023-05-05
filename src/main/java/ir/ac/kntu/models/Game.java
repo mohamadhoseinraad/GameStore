@@ -158,6 +158,7 @@ public class Game implements Cloneable {
         System.out.print(score);
         TerminalColor.cyan();
         System.out.println(" (" + rates.size() + ")");
+        System.out.println(details);
         TerminalColor.blue();
         System.out.println("|----------------------------");
         TerminalColor.reset();
@@ -182,7 +183,7 @@ public class Game implements Cloneable {
             return false;
         }
         Game game = (Game) o;
-        return id == game.getId() && name == game.getName() && genre == game.getGenre();
+        return id == game.getId() && name.equals(game.getName()) && genre.equals(game.getGenre());
     }
 
     @Override

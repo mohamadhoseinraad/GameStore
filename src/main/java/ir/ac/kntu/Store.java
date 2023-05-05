@@ -30,7 +30,7 @@ public class Store {
     }
 
     public Set<Game> getGames() {
-        return new HashSet<>(games);
+        return games;
     }
 
     public void setGames(Set<Game> games) {
@@ -89,7 +89,7 @@ public class Store {
     public ArrayList<User> findUserByEmail(String email) {
         ArrayList<User> result = new ArrayList<>();
         for (User u : users) {
-            if (u.getEmail().equals(email)) {
+            if (u.getEmail().startsWith(email)) {
                 result.add(u);
             }
         }
@@ -114,12 +114,7 @@ public class Store {
     }
 
     public boolean removeGame(Game game) {
-        for (Game gg : games) {
-            if (gg.equals(game)) {
-                return games.remove(game);
-            }
-        }
-        return false;
+        return games.remove(game);
     }
 
     public boolean addUser(User newUser) {

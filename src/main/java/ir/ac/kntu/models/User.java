@@ -173,9 +173,8 @@ public class User {
             return false;
         }
         User user = (User) o;
-        return username == user.getUsername();
+        return username.equals(user.getUsername());
     }
-
     @Override
     public int hashCode() {
         return Objects.hash(username);

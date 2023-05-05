@@ -101,6 +101,7 @@ public class UserSearch {
 
     public User allUsers() {
         ArrayList<User> result = getAllUsers();
+        printUserSearchResult(result);
         if (result.size() != 0) {
             User selectedUser = handleSelect(result);
             if (selectedUser == null) {
