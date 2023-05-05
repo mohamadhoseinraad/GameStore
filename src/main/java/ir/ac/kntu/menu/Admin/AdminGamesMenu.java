@@ -75,7 +75,9 @@ public class AdminGamesMenu extends Menu {
     public void removeGame() {
         GameSearch gameSearch = new GameSearch(storeDB);
         Game game = gameSearch.searchMenu();
-        if (storeDB.removeGame(game) && !game.equals(null)) {
+        System.out.println();
+        System.out.println(storeDB.getGames().contains(game));
+        if (storeDB.removeGame(game) && !(game ==null)) {
             TerminalColor.green();
             System.out.println(game.getName() + " with " + game.getId() + " id successfully deleted !");
             TerminalColor.reset();

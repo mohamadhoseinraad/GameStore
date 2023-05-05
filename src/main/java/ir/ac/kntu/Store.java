@@ -9,16 +9,16 @@ import java.util.*;
 public class Store {
     private Set<User> users;
 
-    private Set<Game> games;
+    private ArrayList<Game> games;
 
     public Store(Set<User> users, Set<Game> games) {
         this.users = new HashSet<>(users);
-        this.games = new HashSet<>(games);
+        this.games = new ArrayList<>(games);
     }
 
     public Store() {
         users = new HashSet<>();
-        games = new HashSet<>();
+        games = new ArrayList<>();
     }
 
     public Set<User> getUsers() {
@@ -29,12 +29,12 @@ public class Store {
         this.users = new HashSet<>(users);
     }
 
-    public Set<Game> getGames() {
+    public ArrayList<Game> getGames() {
         return games;
     }
 
-    public void setGames(Set<Game> games) {
-        this.games = new HashSet<>(games);
+    public void setGames(ArrayList<Game> games) {
+        this.games = new ArrayList<>(games);
     }
 
     public User findUserByUsername(String username) {
@@ -110,11 +110,19 @@ public class Store {
         if (newGame == null){
             return false;
         }
-        return games.add(newGame);
+        if (findGame(newGame.getId() , newGame.getName()) == null){
+            games.add(newGame);
+            return true;
+        }
+        return false;
     }
 
     public boolean removeGame(Game game) {
-        return games.remove(game);
+        if (games.contains(game)){
+            games.remove(game);
+            return true;
+        }
+        return false;
     }
 
     public boolean addUser(User newUser) {
