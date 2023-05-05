@@ -43,6 +43,18 @@ public class FriendProfileMenu extends Menu {
     }
 
     private void showFriendGames() {
+        if (friend.getLibrary().size() == 0){
+            System.out.println("Your friend doesn't have any game!");
+            return;
+        }
+        int i = 1;
+        for (String gameName : friend.getLibrary().values()){
+            System.out.print(i);
+            TerminalColor.yellow();
+            System.out.print(" | ");
+            TerminalColor.reset();
+            System.out.println(gameName);
+        }
     }
 
     private boolean removeFriend(){
