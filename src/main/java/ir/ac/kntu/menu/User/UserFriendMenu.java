@@ -82,6 +82,29 @@ public class UserFriendMenu {
         return null;
     }
 
+    private void sendRequest(User user) {
+        TerminalColor.yellow();
+        System.out.println("Send request to " + user.getUsername() + " ? (Y/N)");
+        String input;
+        while (!(input = Scan.getLine().toUpperCase()).matches("Y|N")) {
+            System.out.println("Send request to " + user.getUsername() + " ? (Y/N)");
+        }
+        TerminalColor.reset();
+        if (input.equals("Y")) {
+            if (user.addRequest(currentUser)) {
+                TerminalColor.green();
+                System.out.println("Requested !");
+            }else {
+                TerminalColor.red();
+                System.out.println("You sent request before this time!");
+            }
+        } else {
+            TerminalColor.yellow();
+            System.out.println("Send request cancelled !");
+        }
+        TerminalColor.reset();
+    }
+
     public User addFriend() {
         ArrayList<User> result = usernameSearch(notFriend);
         printUserSearchResult(result);
@@ -90,8 +113,7 @@ public class UserFriendMenu {
             if (selectedUser == null) {
                 return null;
             }
-            ProfileMenu profileMenu = new ProfileMenu(storeDB, selectedUser);
-            profileMenu.showMenu();
+            sendRequest(selectedUser);
         }
         return null;
     }
@@ -127,6 +149,10 @@ public class UserFriendMenu {
                         addFriend();
                         break;
                     }
+                    case YOUR_REQUESTS: {
+                        requests();
+                        break;
+                    }
                     case BACK: {
                         break;
                     }
@@ -138,6 +164,9 @@ public class UserFriendMenu {
         }
         System.exit(0);
 
+    }
+
+    private void requests() {
     }
 
     public <T extends Enum<T>> T getOption(Class<T> menuEnum) {

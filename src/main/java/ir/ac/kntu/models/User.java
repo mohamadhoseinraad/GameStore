@@ -21,9 +21,9 @@ public class User {
 
     private Map<Integer, String> library;
 
-    private Set<String> friends;
+    private ArrayList<String> friends;
 
-    private Set<String> requests;
+    private ArrayList<String> requests;
 
     public User(String username, String phoneNumber, String email, String password, UserType type) {
         this.username = username.toUpperCase().trim();
@@ -32,8 +32,8 @@ public class User {
         hashPassword = password.hashCode();
         wallet = 0;
         library = new HashMap<>();
-        friends = new HashSet<>();
-        requests = new HashSet<>();
+        friends = new ArrayList<>();
+        requests = new ArrayList<>();
         userType = type;
     }
 
@@ -131,10 +131,10 @@ public class User {
     }
 
     public boolean isFriend(String username) {
-        return library.containsKey(username);
+        return friends.contains(username);
     }
 
-    public Set<String> getFriends() {
+    public ArrayList<String> getFriends() {
         return friends;
     }
 
@@ -180,12 +180,15 @@ public class User {
         return false;
     }
 
-    public Set<String> getRequests() {
+    public ArrayList<String> getRequests() {
         return requests;
     }
 
     public boolean addRequest(User someUser) {
         if (friends.contains(someUser.getUsername())) {
+            return false;
+        }
+        if (requests.contains(someUser.getUsername())) {
             return false;
         }
         return requests.add(someUser.getUsername());
