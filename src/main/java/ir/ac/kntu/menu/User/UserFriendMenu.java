@@ -94,7 +94,10 @@ public class UserFriendMenu {
             if (user.addRequest(currentUser)) {
                 TerminalColor.green();
                 System.out.println("Requested !");
-            }else {
+            } else if (currentUser.isFriend(user.getUsername())) {
+                TerminalColor.red();
+                System.out.println("this username is your friend already!");
+            } else {
                 TerminalColor.red();
                 System.out.println("You sent request before this time!");
             }
@@ -154,7 +157,7 @@ public class UserFriendMenu {
                         break;
                     }
                     case BACK: {
-                        break;
+                        return;
                     }
                     default:
                         System.out.println("Invalid choose");
@@ -167,6 +170,56 @@ public class UserFriendMenu {
     }
 
     private void requests() {
+        ArrayList<User> result = getUserRequested();
+        printUserSearchResult(result);
+        if (result.size() != 0) {
+            User selectedUser = handleSelect(result);
+            if (selectedUser == null) {
+                return;
+            }
+            handleFriendRequest(selectedUser);
+        }
+        return;
+    }
+
+    private void handleFriendRequest(User user) {
+        TerminalColor.yellow();
+        System.out.println(user);
+        System.out.println("1- Accept");
+        System.out.println("2- Delete");
+        String input;
+        while (!(input = Scan.getLine().toUpperCase().trim()).matches("1|2")) {
+            TerminalColor.red();
+            System.out.println("Wrong choose!");
+            TerminalColor.yellow();
+            System.out.println(user);
+            System.out.println("1- Accept");
+            System.out.println("2- Delete");
+        }
+        if (input.equals("1")) {
+            currentUser.addFriend(user);
+            user.addFriend(currentUser);
+            friends = currentUser.getFriendsList(storeDB);
+            notFriend.remove(user);
+            TerminalColor.green();
+            System.out.println(user.getUsername() + " now is your friend!");
+            TerminalColor.reset();
+        } else {
+            currentUser.removeRequest(user);
+            TerminalColor.green();
+            System.out.println(user.getUsername() + " remove from request list");
+            TerminalColor.reset();
+        }
+
+    }
+
+
+    private ArrayList<User> getUserRequested() {
+        ArrayList<User> result = new ArrayList<>();
+        for (String username : currentUser.getRequests()) {
+            result.add(storeDB.findUserByUsername(username));
+        }
+        return result;
     }
 
     public <T extends Enum<T>> T getOption(Class<T> menuEnum) {

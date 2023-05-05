@@ -194,6 +194,10 @@ public class User {
         return requests.add(someUser.getUsername());
     }
 
+    public void removeRequest(User user){
+        requests.remove(user.getUsername());
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
