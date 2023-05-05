@@ -37,6 +37,9 @@ public class User {
         userType = type;
     }
 
+    public UserType getUserType() {
+        return userType;
+    }
 
     public String getUsername() {
         return username;
@@ -133,6 +136,30 @@ public class User {
 
     public Set<String> getFriends() {
         return friends;
+    }
+
+    public ArrayList<User> getFriendsList(Store storeDB) {
+        ArrayList<User> friendsList = new ArrayList<>();
+        Set<User> allUsers = storeDB.getUsers();
+        for (User user : allUsers){
+            if (friends.contains(user.getUsername())){
+                friendsList.add(user);
+            }
+        }
+
+        return friendsList;
+    }
+
+    public ArrayList<User> getUserNotFriend(Store storeDB) {
+        ArrayList<User> friendsList = new ArrayList<>();
+        Set<User> allUsers = storeDB.getUsers();
+        for (User user : allUsers){
+            if (!friends.contains(user.getUsername()) && user.getUserType() != UserType.ADMIN){
+                friendsList.add(user);
+            }
+        }
+        friendsList.remove(this);
+        return friendsList;
     }
 
 

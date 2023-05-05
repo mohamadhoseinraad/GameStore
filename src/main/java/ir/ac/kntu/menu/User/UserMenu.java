@@ -68,5 +68,7 @@ public class UserMenu extends Menu {
     }
 
     public void friends() {
+        UserFriendMenu userFriendMenu = new UserFriendMenu(storeDB , user);
+        userFriendMenu.showMenu();
     }
 }
